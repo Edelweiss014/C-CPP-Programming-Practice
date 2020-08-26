@@ -1,9 +1,6 @@
-Grading at 08/26/2020:07:57:03.838205
-For commit ID b3e4315f33c31c658d09a2cb76fbe8ca1b353e5c
-Grading at Wed Aug 26 15:57:03 CST 2020
-I expected to find a file called 'myNetID.txt' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-README
+Grading at 08/26/2020:08:11:20.690625
+For commit ID a75eb92bf1142dda2e4b5d51c4cb8ff276d3a3fb
+Grading at Wed Aug 26 16:11:20 CST 2020
+Your file matched the expected output
 
-Overall Grade: FAILED
+Overall Grade: PASSED
