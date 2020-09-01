@@ -1,10 +1,11 @@
-Grading at 09/01/2020:07:20:34.068249
-For commit ID 21fc61608b6f15f8c427846ec0bddedea2fb7846
-Grading at Tue Sep  1 15:20:34 CST 2020
+Grading at 09/01/2020:07:27:04.883127
+For commit ID 66ae39eafd0a5a7c9be6d8b3affa736b9e7be64e
+Grading at Tue Sep  1 15:27:04 CST 2020
 Checking errors.txt
-Line_2_did_not_match
-Line_3_did_not_match
-Line_4_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
+errors.txt is correct.
+Checking the syntax is code.c
+code.c has legal syntax
+Your file matched the expected output
 
-Overall Grade: FAILED
+Overall Grade: PASSED
