@@ -16,14 +16,94 @@ int max (int a, int b) {
 }
 
 //Declare your rectangle structure here!
+struct rect_t
+{
+    int x;
+    int y;
+    int width;
+    int height;
+};
+typedef struct rect_t rectangle;
+
+
 
 
 rectangle canonicalize(rectangle r) {
   //WRITE THIS FUNCTION
+  if (r.height < 0) {
+      r.y = r.y + r.height;
+      r.height = -r.height;
+  }
+  if (r.width < 0) {   
+      r.x = r.x + r.width;
+      r.width = -r.width;
+  }
+
   return r;
 }
+
+rectangle situation1 (rectangle r1, rectangle r2) {
+  // When x1 <= x2 and y1 >= y2
+
+  rectangle r3;
+  r1 = canonicalize(r1); r2 = canonicalize(r2);
+  int x1 = r1.x; int x2 = r2.x; int y1 = r1.y; int y2 = r2.y; 
+  int w1 = r1.width; int w2 = r2.width; int h1 = r1.height; int h2 = r2.height; 
+
+  r3.x = x2; r3.y = y1;
+  r3.width = min(w2, w1 - (x2 - x1));
+  r3.height = min(h1, h2 - (y1 - y2));
+
+  if (r3.width < 0 || r3.height < 0) {
+    r3.width = 0; r3.height = 0;
+  }
+  
+  return r3;
+}
+
+rectangle situation2 (rectangle r1, rectangle r2) {
+  // When x1 <= x2 and y1 <= y2
+  
+  rectangle r3;
+  r1 = canonicalize(r1); r2 = canonicalize(r2);
+  int x1 = r1.x; int x2 = r2.x; int y1 = r1.y; int y2 = r2.y; 
+  int w1 = r1.width; int w2 = r2.width; int h1 = r1.height; int h2 = r2.height; 
+  
+  r3.x = x2; r3.y = y2;
+  //printf("x1 = %d, x2 = %d, r3.x = %d\n", x1, x2, r3.x);
+  r3.width = min(w2, w1 - (x2 - x1));
+  r3.height = min(h2, h1 - (y2 - y1));
+
+  if (r3.width < 0 || r3.height < 0) {
+    r3.width = 0; r3.height = 0;
+  }
+
+  return r3;
+}
+
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
+  r1 = canonicalize(r1); r2 = canonicalize(r2); 
+  int x1 = r1.x; int x2 = r2.x; int y1 = r1.y; int y2 = r2.y; 
+  if (x1 <= x2 && y1 >= y2) {
+    r1 = situation1(r1, r2);
+  }
+  else if (x1 >= x2 && y1 <= y2) {
+    r1 = situation1(r2, r1);
+  }
+  else if (x1 <= x2 && y1 <= y2) {
+    r1 = situation2(r1, r2);
+  }
+  else if (x1 >= x2 && y1 >= y2) {
+    r1 = situation2(r2, r1);
+  }
+  else {
+    r1.x = 0;
+    r1.y = 0;
+    r1.height = 0;
+    r1.width = 0;
+  }
+  
   return r1;
 }
 
@@ -145,3 +225,4 @@ int main (void) {
   return EXIT_SUCCESS;
 
 }
+
