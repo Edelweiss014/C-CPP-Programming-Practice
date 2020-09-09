@@ -1,0 +1,21 @@
+Grading at 09/09/2020:16:47:23.994572
+For commit ID 5f13b237503873e769a540b5e7d84c2c26994c89
+Grading at Thu Sep 10 00:47:23 CST 2020
+#################################################
+test input.1:
+Your file matched the expected output
+input.1 passed
+#################################################
+test input.2:
+Your file matched the expected output
+input.2 passed
+#################################################
+test input.3:
+Your file matched the expected output
+input.3 passed
+#################################################
+test input.4:
+Your file matched the expected output
+input.4 passed
+
+Overall Grade: A
