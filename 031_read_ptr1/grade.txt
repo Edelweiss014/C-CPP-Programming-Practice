@@ -1,0 +1,9 @@
+Grading at 09/13/2020:12:29:44.379047
+For commit ID aa266b98dde055819576d0f3ab4f28a4ddb63b3c
+Grading at Sun Sep 13 20:29:44 CST 2020
+Attempting to compile test.c
+The code did not compile
+Your file matched the expected output
+Your output matched what we expected
+
+Overall Grade: FAILED
