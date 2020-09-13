@@ -1,9 +1,11 @@
-Grading at 09/13/2020:12:29:44.379047
-For commit ID aa266b98dde055819576d0f3ab4f28a4ddb63b3c
-Grading at Sun Sep 13 20:29:44 CST 2020
+Grading at 09/13/2020:12:33:34.642588
+For commit ID ee98515ddf0b61a0ec46ed06109ea3bcab36dd3b
+Grading at Sun Sep 13 20:33:34 CST 2020
 Attempting to compile test.c
-The code did not compile
+gcc -g -Wall -O2 -c test.c
+gcc -g -Wall -O2 -o test test.o
+compiled
 Your file matched the expected output
 Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
