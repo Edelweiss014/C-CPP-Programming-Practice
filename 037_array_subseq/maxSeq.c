@@ -16,9 +16,9 @@ size_t maxSeq(int * array, size_t n) {
             accumulateLen++;
         }
         else {
-            if (accumulateLen > longestLen) longestLen = accumulateLen;
             accumulateLen = 1;
         }
+        if (accumulateLen > longestLen) longestLen = accumulateLen;
     }
     return longestLen;
 }
