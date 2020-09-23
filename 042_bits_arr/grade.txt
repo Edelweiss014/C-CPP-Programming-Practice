@@ -1,12 +1,21 @@
-Grading at 09/23/2020:05:58:15.688462
-For commit ID f0e1a19da0cf129d769db104fe00c940f0e71bb5
-Grading at Wed Sep 23 13:58:15 CST 2020
+Grading at 09/23/2020:06:00:56.066139
+For commit ID 80388934b38c2a1f1d244c99e519d72a1ed7cb4f
+Grading at Wed Sep 23 14:00:55 CST 2020
 Attempting to compile numToBits.c
-numToBits.c: In function ‘numToBits’:
-numToBits.c:19:13: error: unused variable ‘temp’ [-Werror=unused-variable]
-         int temp = 0;
-             ^~~~
-cc1: all warnings being treated as errors
-The code did not compile!
+Your file matched the expected output
+Your output matched what we expected
+Removing your main() and replacing it with our own to run more tests...
+#################################################
+testcase2:
+array size:0 was Correct
+#################################################
+testcase3:
+array size:1 was Correct
+#################################################
+testcase4:
+array size:100 was Correct
+#################################################
+testcase5:
+array size:5000 was Correct
 
-Overall Grade: F
+Overall Grade: A
