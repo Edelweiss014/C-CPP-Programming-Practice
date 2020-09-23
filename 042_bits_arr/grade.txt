@@ -1,0 +1,12 @@
+Grading at 09/23/2020:05:58:15.688462
+For commit ID f0e1a19da0cf129d769db104fe00c940f0e71bb5
+Grading at Wed Sep 23 13:58:15 CST 2020
+Attempting to compile numToBits.c
+numToBits.c: In function ‘numToBits’:
+numToBits.c:19:13: error: unused variable ‘temp’ [-Werror=unused-variable]
+         int temp = 0;
+             ^~~~
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
