@@ -45,7 +45,7 @@ int main(int argc, char ** argv) {
             }
         }
     }
-    int c;
+    int c; c = fgetc(f);
     if ((c = fgetc(f)) != EOF) {
         fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
