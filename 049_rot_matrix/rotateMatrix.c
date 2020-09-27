@@ -26,7 +26,7 @@ int main(int argc, char ** argv) {
     }
     FILE * f = fopen(argv[1], "r");
     if (f == NULL) {
-        fprintf(stderr, "Error matrix!\n");
+        fprintf(stderr, "Error arguments!\n");
         return EXIT_FAILURE;
     }
     char matrix[10][10]; 
@@ -45,8 +45,7 @@ int main(int argc, char ** argv) {
             }
         }
     }
-    int c; c = fgetc(f);
-    if ((c = fgetc(f)) != EOF) {
+    if (fgets(str, 12, f) != NULL) {
         fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
