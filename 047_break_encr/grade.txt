@@ -1,0 +1,18 @@
+Grading at 09/27/2020:03:33:29.003292
+For commit ID 44516523b171bebcd935a1dad1fb43139870e992
+Grading at Sun Sep 27 11:33:25 CST 2020
+Attempting to compile breaker.c 
+g++ -g -Wall -O2 -c HW47.c
+g++ -g -Wall -O2 -o breaker HW47.o
+testcase1 passed
+#################################################
+testcase2:
+testcase2 passed
+#################################################
+testcase3:
+testcase3 passed
+#################################################
+testcase4:
+testcase4 passed
+
+Overall Grade: A
