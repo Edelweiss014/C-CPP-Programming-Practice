@@ -21,12 +21,12 @@ void rotateMatrix(char matrix[10][10]) {
 
 int main(int argc, char ** argv) {
     if (argc != 2) {
-        perror("Insufficient or exceeding arguments!\n");
+        fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
     FILE * f = fopen(argv[1], "r");
     if (f == NULL) {
-        perror("Error opening file!\n");
+        fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
     char matrix[10][10]; 
@@ -35,7 +35,7 @@ int main(int argc, char ** argv) {
         if (fgets(str, 12, f) != NULL) {
             char * findNewLine = strchr(str, '\n');
             if (findNewLine == NULL || findNewLine - str != 10){
-                printf("Error matrix!\n");
+                fprintf(stderr, "Error matrix!\n");
                 return EXIT_FAILURE;
             }
             else {
@@ -46,9 +46,8 @@ int main(int argc, char ** argv) {
         }
     }
     int c;
-    c = fgetc(f);
     if ((c = fgetc(f)) != EOF) {
-        perror("Error matrix!\n");
+        fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
     rotateMatrix(matrix);
@@ -59,8 +58,9 @@ int main(int argc, char ** argv) {
         printf("\n");
     }
     if (fclose(f) != 0) {
-        perror("Error closing file!\n");
+        fprintf(stderr, "Error closing file!\n");
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
 }
+
