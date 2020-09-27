@@ -4,8 +4,7 @@
 #include <string.h>
 
 
-void rotateMatrix(char matrix[10][10]) {
-    char temp[10][10];
+void rotateMatrix(char matrix[10][10], char temp[10][10]) {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             temp[j][9 - i] = matrix[i][j];
@@ -26,7 +25,7 @@ int main(int argc, char ** argv) {
     }
     FILE * f = fopen(argv[1], "r");
     if (f == NULL) {
-        fprintf(stderr, "Error arguments!\n");
+        fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
     char matrix[10][10]; 
@@ -45,11 +44,13 @@ int main(int argc, char ** argv) {
             }
         }
     }
-    if (fgets(str, 12, f) != NULL) {
+    int c; c = fgetc(f);
+    if ((c = fgetc(f)) != EOF) {
         fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
-    rotateMatrix(matrix);
+    char temp[10][10];
+    rotateMatrix(matrix, temp);
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             printf("%c", matrix[i][j]);
@@ -62,4 +63,3 @@ int main(int argc, char ** argv) {
     }
     return EXIT_SUCCESS;
 }
-
