@@ -28,13 +28,14 @@ int main(int argc, char ** argv) {
         fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
-    char matrix[10][10]; 
+    char matrix[10][10];
     char str[12];
     for (int i = 0; i < 10; i++) {
         if (fgets(str, 12, f) != NULL) {
             char * findNewLine = strchr(str, '\n');
             if (findNewLine == NULL || findNewLine - str != 10){
-                fprintf(stderr, "Error matrix!\n");
+                fclose(f);
+		fprintf(stderr, "Error matrix!\n");
                 return EXIT_FAILURE;
             }
             else {
@@ -43,9 +44,15 @@ int main(int argc, char ** argv) {
                 }
             }
         }
+        else {
+		fclose(f);
+                fprintf(stderr, "Error matrix\n");
+		return EXIT_FAILURE;
+	}
     }
     int c; c = fgetc(f);
     if ((c = fgetc(f)) != EOF) {
+	fclose(f);
         fprintf(stderr, "Error matrix!\n");
         return EXIT_FAILURE;
     }
@@ -58,6 +65,7 @@ int main(int argc, char ** argv) {
         printf("\n");
     }
     if (fclose(f) != 0) {
+	fclose(f);
         fprintf(stderr, "Error closing file!\n");
         return EXIT_FAILURE;
     }
