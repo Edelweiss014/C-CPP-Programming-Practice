@@ -35,7 +35,7 @@ country_t parseLine(char * line) {
   //    '\0'.
   i = i + 1;
   for (; i < lineLength - 1; i++) {
-    if (line[i] < 48 || line[i] > 57) {
+    if (!isdigit(line[i])) {
       fprintf(stderr, "Wrong country format - population is not a number\n");
       exit(EXIT_FAILURE);
     }
@@ -69,8 +69,12 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 }
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+  // Variable "thisCum" calculates the cumulative number
+  //    that should be placed into the array each time
+  double thisCum = 0;
   for (size_t i = 0; i < n_days; i++) {
-    cum[i] = data[i] / pop;
+    thisCum += (double)data[i] * 100000 / pop;
+    cum[i] = thisCum;
   }
 }
 
