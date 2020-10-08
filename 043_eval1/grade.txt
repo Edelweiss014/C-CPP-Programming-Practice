@@ -1,0 +1,17 @@
+Grading at 10/08/2020:08:57:08.211216
+For commit ID eb9d4e4e3e6b947b19951be21e48c91efe059ca6
+Grading at Thu Oct  8 16:57:07 CST 2020
+
+Checking whether or not your code could compile
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
+
+Checking whether or not your code could pass the given testcases
+****************************************************************
+
+Your program did not pass the given testcases. This is a warning!!! Please check your code.
+
+Overall Grade: NO GRADE YET
