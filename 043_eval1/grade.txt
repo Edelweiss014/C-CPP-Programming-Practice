@@ -1,17 +1,35 @@
-Grading at 10/08/2020:08:57:08.211216
-For commit ID eb9d4e4e3e6b947b19951be21e48c91efe059ca6
-Grading at Thu Oct  8 16:57:07 CST 2020
+Grading at 10/09/2020:12:16:54.628630
+For commit ID 07d07e76e4641127b0459971ca266a0c0b96f90e
+Grading at Fri Oct  9 20:16:54 CST 2020
+Doing some basic checking for your submission.
 
-Checking whether or not your code could compile
+Checking that your code compiles
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
+The code compiled (good)
 
-Checking whether or not your code could pass the given testcases
-****************************************************************
+Checking with the provided test cases
 
-Your program did not pass the given testcases. This is a warning!!! Please check your code.
+Testing ./printCountries pop.csv 
+Your file matched the expected output
+Passed
+
+Testing ./printRunningAvg pop.csv daily.csv
+Your file matched the expected output
+Passed
+
+Testing ./printCumulative pop.csv daily.csv
+Your file matched the expected output
+Passed
+
+Testing ./printDailyMax pop.csv daily.csv
+Your file matched the expected output
+Passed
+
+You have passed the pregrader tests
+You should still run comprehensive tests of your own
 
 Overall Grade: NO GRADE YET
