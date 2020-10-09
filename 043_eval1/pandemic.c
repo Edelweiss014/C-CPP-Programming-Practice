@@ -58,12 +58,12 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   double runAvg = 0;
   // The iterator i is the middle element
   for (size_t i = 3; i < n_days - 3; i++) {
-    // Set runAvg to 0
+    // Set runAvg of a certain day to 0
     runAvg = 0;
     for (k = -3; k < 4; k++) {
-      runAvg += avg[i + k];
+      runAvg += data[i + k];
     }
-    avg[j] = runAvg;
+    avg[j] = runAvg / 7;
     j++;
   }
 }
