@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <limits.h>
+#include <errno.h>
 
 // Define the value of the largest population
 #define ULLONG_MAX MAX_POPULATION
@@ -45,6 +46,7 @@ country_t parseLine(char * line) {
     }
     // We use j as the index for population
     if (j >= 64) {
+      // Stop the program directly when the string is too long
       fprintf(stderr, "Wrong country format - population out of range\n");
       exit(EXIT_FAILURE);
     }
@@ -52,7 +54,13 @@ country_t parseLine(char * line) {
     j = j + 1;
   }
   num[j] = '\0';
+  // Set errno to 0 to check overflow
+  errno = 0;
   (ans.population) = strtoull(num, NULL, 10);
+  if (errno != 0) {
+     fprintf(stderr, "Wrong country format - population out of range\n");
+     exit(EXIT_FAILURE);
+  }
   return ans;
 }
 
