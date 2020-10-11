@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
+
+// Define the value of the largest population
+#define ULLONG_MAX MAX_POPULATION
 
 country_t parseLine(char * line) {
   country_t ans;
@@ -83,7 +87,7 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   unsigned maxCases = 0;
-  size_t rowNum = 0; 
+  size_t rowNum = 0;
   for (size_t i = 0; i < n_countries; i++) {
     for (size_t j = 0; j < n_days; j++) {
       if (data[i][j] > maxCases) {
