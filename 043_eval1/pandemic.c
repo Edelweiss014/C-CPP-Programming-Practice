@@ -4,17 +4,25 @@
 #include <string.h>
 #include <ctype.h>
 #include <limits.h>
-
-// Define the value of the largest population
-#define ULLONG_MAX MAX_POPULATION
+#include <errno.h>
 
 country_t parseLine(char * line) {
   country_t ans;
   size_t lineLength = strlen(line);
-  size_t i = 0; size_t j = 0;
+  size_t i = 0;
 
-  // use "num" to store the string form of the population
-  char num[65] = {'\0'};
+  // Search ',' in the string. If there is no ',' or the
+  //    country name is too long, we should exit with a
+  //    failure status. 
+  char * commaPointer = strchr(line, ',');
+  if (commaPointer == NULL) {
+    fprintf(stderr, "Wrong country format - cannot find a comma\n");
+    exit(EXIT_FAILURE);
+  }
+  if (commaPointer - line > 63) {
+    fprintf(stderr, "Wrong country format - country name too long\n");
+    exit(EXIT_FAILURE);
+  }
 
   // Get country name by iterating and add '\0' after it
   for (i = 0; i < lineLength; i++) {
@@ -24,6 +32,17 @@ country_t parseLine(char * line) {
     }
     (ans.name)[i] = line[i];
   }
+  
+  // If the population includes characters that are not 
+  //    digits, we should exit with a failure status
+  i = i + 1;
+  for (; i < lineLength - 1; i++) {
+    if (line[i] == '\0' || line[i] == '\n') break;
+    else if (line[i] < 48 || line[i] > 57) {
+      fprintf(stderr, "Wrong country format - population is not a number\n");
+      exit(EXIT_FAILURE);
+    }
+  }
 
   // If we reach the end of the string without getting a 
   //    comma, we should return with a failure status.
@@ -32,31 +51,25 @@ country_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
 
-  // Get population by iterating. When encounter a 
-  //    non-digit char or the string is out of range
-  //    (more than 64 digits), we should return with
-  //    a failure status. We then end the string with
-  //    '\0'.
-  i = i + 1;
-  for (; i < lineLength - 1; i++) {
-    if (!isdigit(line[i])) {
-      fprintf(stderr, "Wrong country format - population is not a number\n");
-      exit(EXIT_FAILURE);
-    }
-    // We use j as the index for population
-    if (j >= 64) {
-      fprintf(stderr, "Wrong country format - population out of range\n");
-      exit(EXIT_FAILURE);
-    }
-    num[j] = line[i];
-    j = j + 1;
+  errno = 0;
+  (ans.population) = strtoull(commaPointer + 1, NULL, 10);
+  // Use errno to 0 to check overflow
+  if (errno == ERANGE) {
+    fprintf(stderr, "Wrong country format - population out of range\n");
+    exit(EXIT_FAILURE);
   }
-  num[j] = '\0';
-  (ans.population) = strtoull(num, NULL, 10);
+  // Exit with a failure status when there is no population
+  if (ans.population == 0) {
+    fprintf(stderr, "Wrong country format - population not available\n");
+    exit(EXIT_FAILURE);
+  }
   return ans;
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
+  if (n_days <= 6 || data == NULL) {
+    fprintf(stderr, "Avg is unavailable\n");
+  }
   size_t j = 0;
   int k = 0;
   double runAvg = 0;
