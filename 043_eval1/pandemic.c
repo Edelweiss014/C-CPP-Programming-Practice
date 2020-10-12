@@ -67,8 +67,10 @@ country_t parseLine(char * line) {
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
+  // Check illegal inputs
   if (n_days <= 6 || data == NULL) {
     fprintf(stderr, "Avg is unavailable\n");
+    exit(EXIT_FAILURE);
   }
   size_t j = 0;
   int k = 0;
@@ -86,6 +88,12 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 }
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
+  // Check illegal inputs
+  if (cum == NULL || data == NULL) {
+    fprintf(stderr, "Information is unavailable\n");
+    exit(EXIT_FAILURE);
+  }
+
   // Variable "thisCum" calculates the cumulative number
   //    that should be placed into the array each time
   double thisCum = 0;
@@ -99,6 +107,14 @@ void printCountryWithMax(country_t * countries,
                          size_t n_countries,
                          unsigned ** data,
                          size_t n_days) {
+  // Check illegal inputs
+  if (countries == NULL || data == NULL) {
+    fprintf(stderr, "Information is unavailable\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Iterate to check the maximum number and its
+  //    corresponding row
   unsigned maxCases = 0;
   size_t rowNum = 0;
   for (size_t i = 0; i < n_countries; i++) {
