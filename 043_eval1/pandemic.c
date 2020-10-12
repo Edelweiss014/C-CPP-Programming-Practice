@@ -6,9 +6,6 @@
 #include <limits.h>
 #include <errno.h>
 
-// Define the value of the largest population
-#define ULLONG_MAX MAX_POPULATION
-
 country_t parseLine(char * line) {
   country_t ans;
   size_t lineLength = strlen(line);
@@ -55,12 +52,7 @@ country_t parseLine(char * line) {
   }
   num[j] = '\0';
   // Set errno to 0 to check overflow
-  errno = 0;
   (ans.population) = strtoull(num, NULL, 10);
-  if (errno != 0) {
-     fprintf(stderr, "Wrong country format - population out of range\n");
-     exit(EXIT_FAILURE);
-  }
   return ans;
 }
 
