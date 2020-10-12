@@ -14,6 +14,19 @@ country_t parseLine(char * line) {
   // use "num" to store the string form of the population
   char num[65] = {'\0'};
 
+  // Search ',' in the string. If there is no ',' or the
+  //    country name is too long, we should exit with a
+  //    failure status. 
+  const char * commaPointer = strchr(line, ',');
+  if (commaPointer == NULL) {
+    fprintf(stderr, "Wrong country format - cannot find a comma\n");
+    exit(EXIT_FAILURE);
+  }
+  if (commaPointer - line > 63) {
+    fprintf(stderr, "Wrong country format - country name too long\n");
+    exit(EXIT_FAILURE);
+  }
+
   // Get country name by iterating and add '\0' after it
   for (i = 0; i < lineLength; i++) {
     if (line[i] == ',') {
@@ -41,7 +54,7 @@ country_t parseLine(char * line) {
       fprintf(stderr, "Wrong country format - population is not a number\n");
       exit(EXIT_FAILURE);
     }
-    // We use j as the index for population
+    // Use j as the index for population
     if (j >= 64) {
       // Stop the program directly when the string is too long
       fprintf(stderr, "Wrong country format - population out of range\n");
@@ -50,9 +63,21 @@ country_t parseLine(char * line) {
     num[j] = line[i];
     j = j + 1;
   }
+  // If there is no population available, the program
+  //    should return with a failure status
+  if (j == 0) {
+    fprintf(stderr, "Wrong country format - population not available\n");
+    exit(EXIT_FAILURE);
+  }
+
   num[j] = '\0';
-  // Set errno to 0 to check overflow
   (ans.population) = strtoull(num, NULL, 10);
+  
+  // Use errno to 0 to check overflow
+  if (errno == ERANGE) {
+    fprintf(stderr, "Wrong country format - population out of range\n");
+    exit(EXIT_FAILURE);
+  }
   return ans;
 }
 
