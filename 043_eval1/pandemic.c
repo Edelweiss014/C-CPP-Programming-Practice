@@ -14,7 +14,7 @@ country_t parseLine(char * line) {
   // Search ',' in the string. If there is no ',' or the
   //    country name is too long, we should exit with a
   //    failure status. 
-  char * commaPointer = strchr(line, ',');
+  const char * commaPointer = strchr(line, ',');
   if (commaPointer == NULL) {
     fprintf(stderr, "Wrong country format - cannot find a comma\n");
     exit(EXIT_FAILURE);
