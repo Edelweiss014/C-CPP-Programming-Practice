@@ -1,10 +1,12 @@
-Grading at 10/13/2020:02:36:34.906304
-For commit ID 70778896bade2a72466be730f3032e20b9f1bf60
-Grading at Tue Oct 13 10:36:31 CST 2020
+Grading at 10/13/2020:02:46:38.275525
+For commit ID c5e9d1a58c5c70ec20cf9af301b3e4aca1521adb
+Grading at Tue Oct 13 10:46:33 CST 2020
 Attempting to compile sortLines.c
 #################################################
 testcase1:
-testcase1 failed, your program didn't indicate this is a failure case
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase2:
 Your output is correct
@@ -12,9 +14,13 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase3:
-Your output is incorrect
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase4:
-Your output is incorrect
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 
-Overall Grade: F
+Overall Grade: A
