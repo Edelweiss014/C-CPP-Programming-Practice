@@ -29,6 +29,7 @@ int main(int argc, char ** argv) {
       line = NULL;
     }
     free(line);
+    sortData(pointerArray, count);
     for (size_t j = 0; j < count; j++) {
       printf("%s", pointerArray[j]);
       free(pointerArray[j]);
@@ -42,6 +43,7 @@ int main(int argc, char ** argv) {
     size_t count = 0;
     f = fopen(argv[i], "r");
     if (f == NULL) {
+      fprintf(stderr, "Failed to open the file\n");
       return EXIT_FAILURE;
     }
     size_t sz = 0; ssize_t len = 0;
@@ -54,12 +56,16 @@ int main(int argc, char ** argv) {
       line = NULL;
     }
     free(line);
+    sortData(pointerArray, count);
     for (size_t j = 0; j < count; j++) {
       printf("%s", pointerArray[j]);
       free(pointerArray[j]);
     }
     if (pointerArray != NULL) free(pointerArray);
-    fclose(f);
+    if (fclose(f) != 0) {
+      fprintf(stderr, "Failed to close the file\n");
+      return EXIT_FAILURE;
+    }
   }
   return EXIT_SUCCESS;
 }
