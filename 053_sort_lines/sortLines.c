@@ -17,8 +17,49 @@ void sortData(char ** data, size_t count) {
 }
 
 int main(int argc, char ** argv) {
-  
-  //WRITE YOUR CODE HERE!
-  
+  if (argc == 1) {
+    size_t count = 0;
+    size_t sz = 0; ssize_t len = 0;
+    char * line = NULL;
+    char ** pointerArray = NULL;
+    while ((len = getline(&line, &sz, stdin)) >= 0) {
+      count++;
+      pointerArray = (char **)realloc(pointerArray, (count) * sizeof(pointerArray));
+      pointerArray[count - 1] = line;
+      line = NULL;
+    }
+    free(line);
+    for (size_t j = 0; j < count; j++) {
+      printf("%s", pointerArray[j]);
+      free(pointerArray[j]);
+    }
+    if (pointerArray != NULL) free(pointerArray);
+    return EXIT_SUCCESS;
+  }
+
+  for (size_t i = 1; i < argc; i++) {
+    FILE * f = NULL;
+    size_t count = 0;
+    f = fopen(argv[i], "r");
+    if (f == NULL) {
+      return EXIT_FAILURE;
+    }
+    size_t sz = 0; ssize_t len = 0;
+    char * line = NULL;
+    char ** pointerArray = NULL;
+    while ((len = getline(&line, &sz, f)) >= 0) {
+      count++;
+      pointerArray = (char **)realloc(pointerArray, (count) * sizeof(pointerArray));
+      pointerArray[count - 1] = line;
+      line = NULL;
+    }
+    free(line);
+    for (size_t j = 0; j < count; j++) {
+      printf("%s", pointerArray[j]);
+      free(pointerArray[j]);
+    }
+    if (pointerArray != NULL) free(pointerArray);
+    fclose(f);
+  }
   return EXIT_SUCCESS;
 }
