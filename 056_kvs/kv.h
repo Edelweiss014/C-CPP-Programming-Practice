@@ -3,12 +3,12 @@
 
 
 struct _kvpair_t { 
-  char key[64];
-  char value[64];
+  char * key;
+  char * value;
 };
 typedef struct _kvpair_t kvpair_t;
 
-struct _kvarray_t { 
+struct _kvarray_t {
   size_t len;
   kvpair_t * * kvarray;
 };

@@ -3,31 +3,27 @@
 #include <string.h>
 #include "kv.h"
 
-void readPair(char * line, kvpair_t * pair) {
+kvpair_t * readPair(char * line) {
+  kvpair_t * pair = malloc(sizeof(* pair));
   char * equPosition = strchr(line, '=');
   if (equPosition == NULL) {
     fprintf(stderr, "Invalid key-value pair\n");
     exit(EXIT_FAILURE);
   }
   size_t i = 0;
+  pair->key = malloc((equPosition - line + 1) * sizeof(*(pair->key)));
   for (i = 0; i < equPosition - line; i++) {
-    if (i == 64) {
-      fprintf(stderr, "Too long key\n");
-      exit(EXIT_FAILURE);
-    }
     pair->key[i] = line[i];
   }
   pair->key[i] = '\0';
   size_t j = 1;
-  for (j = 1; j <strlen(line); j++) {
-    if (j == 65) {
-      fprintf(stderr, "Too long value\n");
-      exit(EXIT_FAILURE);
-    }
-    pair->value[j - 1] = equPosition[j];
+  char * endOfStr = strchr(line, '\n');
+  pair->value = malloc((endOfStr - equPosition) * sizeof(*(pair->key)));
+  for (j = 0; j < endOfStr - equPosition - 1; j++) {
+    pair->value[j] = equPosition[j + 1];
   }
-  pair->value[j - 1] = '\0';
-  return;
+  pair->value[j] = '\0';
+  return pair;
 }
 
 kvarray_t * readKVs(const char * fname) {
@@ -41,24 +37,35 @@ kvarray_t * readKVs(const char * fname) {
   size_t sz = 0;
   ssize_t len = 0;
   char * line = NULL;
+  thisArray->kvarray = malloc(sizeof(*(thisArray->kvarray)));
   while ((len = getline(&line, &sz, f)) >= 0) {
-    kvpair_t * thisPair = malloc(sizeof(* thisPair));
-    readPair(line, thisPair);
+    kvpair_t * thisPair = readPair(line);
     thisArray->len++;
-    thisArray->kvarray = realloc(thisArray->kvarray, thisArray->len);
-    thisArray->kvarray[len - 1] = thisPair;
+    thisArray->kvarray = realloc(thisArray->kvarray, (thisArray->len) * sizeof(*(thisArray->kvarray)));
+    thisArray->kvarray[thisArray->len - 1] = thisPair;
     line = NULL;
+  }
+  if (fclose(f) != 0) {
+    fprintf(stderr, "Error closing file\n");
+    exit(EXIT_FAILURE);
   }
   free(line);
   return thisArray;
 }
 
 void freeKVs(kvarray_t * pairs) {
-  //WRITE ME
+  for (size_t i = 0; i < pairs->len; i++) {
+    free(pairs->kvarray[i]->key);
+    free(pairs->kvarray[i]->value);
+    free(pairs->kvarray[i]);
+  }
+  free(pairs->kvarray);
+  free(pairs);
+  return;
 }
 
 void printKVs(kvarray_t * pairs) {
-  //WRITE ME
+  return;
 }
 
 char * lookupValue(kvarray_t * pairs, const char * key) {
