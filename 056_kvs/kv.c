@@ -43,7 +43,6 @@ kvarray_t * readKVs(const char * fname) {
     thisArray->len++;
     thisArray->kvarray = realloc(thisArray->kvarray, (thisArray->len) * sizeof(*(thisArray->kvarray)));
     thisArray->kvarray[thisArray->len - 1] = thisPair;
-    line = NULL;
   }
   if (fclose(f) != 0) {
     fprintf(stderr, "Error closing file\n");
