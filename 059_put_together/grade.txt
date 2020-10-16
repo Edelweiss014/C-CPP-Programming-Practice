@@ -1,6 +1,6 @@
-Grading at 10/16/2020:07:23:43.187596
-For commit ID 3c8078281274a4aa24f7bf389178fa24d29c5cee
-Grading at Fri Oct 16 15:23:39 CST 2020
+Grading at 10/16/2020:07:48:55.386817
+For commit ID bd131e071828ccab76e1730a2b06cab279d06971
+Grading at Fri Oct 16 15:48:51 CST 2020
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
@@ -13,58 +13,33 @@ testcase1:
 valgrind reported memory errors
 #################################################
 testcase2:
-Line_1_did_not_match
-Line_2_did_not_match
-Line_3_did_not_match
-Line_5_did_not_match
-Line_6_did_not_match
-Line_7_did_not_match
-Line_8_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Comparing file list1a.txt.counts with answer
 Your output is correct
 Comparing file list1b.txt.counts with answer
-Line_1_did_not_match
-Line_2_did_not_match
-Line_3_did_not_match
-Line_5_did_not_match
-Line_7_did_not_match
-Line_8_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase3:
-Line_1_did_not_match
-Line_2_did_not_match
-Line_3_did_not_match
-Line_4_did_not_match
-Line_5_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Comparing file list2a.txt.counts with answer
 Your output is correct
 Comparing file list2b.txt.counts with answer
-Line_2_did_not_match
-Line_4_did_not_match
-Line_5_did_not_match
-Line_6_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
 Comparing file list2c.txt.counts with answer
-Line_2_did_not_match
-Line_3_did_not_match
-Line_4_did_not_match
-Line_5_did_not_match
-Line_6_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase4:
-Line_1_did_not_match
-Line_6_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Comparing file list3a.txt.counts with answer
 Your output is correct
   - Valgrind was clean (no errors, no memory leaks)
 valgrind was clean
 
-Overall Grade: F
+Overall Grade: B
