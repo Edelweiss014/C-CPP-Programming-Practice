@@ -1,8 +1,6 @@
-red: 6
-yellow: 4
-green: 3
+red: 3
+green: 1
 blue: 1
-orange: 2
-brown: 1
-purple: 3
-pink: 1
+purple: 2
+yellow: 2
+<unknown> : 2

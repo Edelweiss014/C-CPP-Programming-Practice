@@ -12,9 +12,18 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
     exit(EXIT_FAILURE);
   }
   counts_t * c = createCounts();
-  for (size_t i = 0; i < kvPairs->len; i++) {
-    addCount(c, kvPairs->kvarray[i]->value);
+  size_t sz = 0;
+  ssize_t len = 0;
+  char * line = NULL;
+  while ((len = getline(&line, &sz, f)) >= 0) {
+    char * name = malloc(strlen(line) * sizeof(* name));
+    strncpy(name, line, strlen(line) - 1);
+    name[strlen(line) - 1] = '\0';
+    char * value = lookupValue(kvPairs, name);
+    addCount(c, value);
+    free(name);
   }
+  free(line);
   if (fclose(f) != 0) {
     fprintf(stderr, "Error closing file\n");
     exit(EXIT_FAILURE);
