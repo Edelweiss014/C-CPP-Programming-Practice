@@ -1,0 +1,7 @@
+Grading at 10/22/2020:08:48:17.495002
+For commit ID 14c6233948b93255d7ea9b52db17dea13f2a962d
+Grading at Thu Oct 22 16:48:17 CST 2020
+Reading your quiz answers from answers.txt
+You have 2 wrong answers
+
+Overall Grade: FAILED
