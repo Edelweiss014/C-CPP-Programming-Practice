@@ -1,7 +1,6 @@
-Grading at 10/13/2020:14:25:47.137479
+Grading at 10/23/2020:06:43:57.928008
 For commit ID fbe21abd31e9c40f7abe96e06743544e9e110e1e
-Grading at Tue Oct 13 22:25:46 CST 2020
-Doing some basic checking for your submission.
+Grading at Fri Oct 23 14:43:40 CST 2020
 
 Checking that your code compiles
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -9,27 +8,169 @@ gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o pri
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
-The code compiled (good)
 
-Checking with the provided test cases
+=========================================================================
+Step 1
 
-Testing ./printCountries pop.csv 
++-----------------------------------------------------------------------+
+Test case 1
+Your program successfully indicated a failure case
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 2
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 3
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 4
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 5
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 6
 Your file matched the expected output
-Passed
-
-Testing ./printRunningAvg pop.csv daily.csv
+                                                         [10/10]
++-----------------------------------------------------------------------+
+Test case 7
 Your file matched the expected output
-Passed
-
-Testing ./printCumulative pop.csv daily.csv
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 8
 Your file matched the expected output
-Passed
-
-Testing ./printDailyMax pop.csv daily.csv
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 9
 Your file matched the expected output
-Passed
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 10
+Line_1_did_not_match
+Your file did not match the expected ouput
+                                                         [0/1]
++-----------------------------------------------------------------------+
+Test case 11
+Your file matched the expected output
+                                                         [1/1]
 
-You have passed the pregrader tests
-You should still run comprehensive tests of your own
+Step 1 total                                             [29/30]
 
-Overall Grade: NO GRADE YET
+=========================================================================
+Step 2
+
++-----------------------------------------------------------------------+
+Test case 12
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 13
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 14
+Line_1_did_not_match
+Your file did not match the expected ouput
+                                                         [0/2]
++-----------------------------------------------------------------------+
+Test case 15
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 16
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 17
+Your file matched the expected output
+                                                         [3/3]
+
+Step 2 total                                             [18/20]
+
+=========================================================================
+Step 3
+
++-----------------------------------------------------------------------+
+Test case 18
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 19
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 20
+Line_1_did_not_match
+Your file did not match the expected ouput
+                                                         [0/2]
++-----------------------------------------------------------------------+
+Test case 21
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 22
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 23
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 24
+Your file matched the expected output
+                                                         [2/2]
+
+Step 3 total                                             [18/20]
+
+=========================================================================
+Step 4
+
++-----------------------------------------------------------------------+
+Test case 25
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 26
+Your file matched the expected output
+                                                         [5/5]
++-----------------------------------------------------------------------+
+Test case 27
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 28
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 29
+Your file matched the expected output
+                                                         [4/4]
+
+Step 4 total                                             [20/20]
+
+=========================================================================
+Code quality
+
+Abstration:    0
+Comments:      2.5
+Formatting:    3
+Others:        2
+Comments from your grader:
+Good formatting and good coding style. However, you should try to abstract 
+something out into a function to reduce the redundency and improve the 
+readability. For example, you always write fprintf() and exit(). Why not 
+abstract these two lines into a function so that you do not need to change 
+everywhere when you want to change the error handling. Besides, you should have 
+always written some comments before the functions you implement to describe 
+what it does and how to use it etc., including the functions we ask you to 
+write.
+
+Quality total                                            [7.5/10]
+
+=========================================================================
+
+Overall Grade: 92
