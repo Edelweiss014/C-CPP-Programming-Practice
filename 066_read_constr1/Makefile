@@ -1,6 +1,6 @@
-all: main
+all: code
 
-main: code.o
+code: code.o
 	g++ -g -Wall -O3 -o main code.o
 
 code.o: code.cpp
