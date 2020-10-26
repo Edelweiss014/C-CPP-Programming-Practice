@@ -1,7 +1,7 @@
 all: code
 
 code: code.o
-	g++ -g -Wall -O3 -o main code.o
+	g++ -g -Wall -O3 -o code code.o
 
 code.o: code.cpp
 	g++ -g -Wall -O3 -c code.cpp
