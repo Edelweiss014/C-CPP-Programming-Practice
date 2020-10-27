@@ -78,9 +78,6 @@ void nullPointerErr () {
 //      categories stored
 // Output(s): parsed story, to stdout
 void parseStory (FILE * f, catarray_t * cat) {
-    if (f == NULL || cat == NULL) {
-        nullPointerErr();
-    }
     int c;
     // categoryFinished: check whether the cats
     //      are closed by an underscore
@@ -154,9 +151,6 @@ void storeWord (char * word, category_t * thisCate) {
 //      with its category indicated; catArr: the
 //      catarray to store the words
 void parseWord (const char * line, catarray_t * catArr) {
-    if (catArr == NULL) {
-        nullPointerErr();
-    }
     const char * colonPointer = strchr(line, ':');
     if (!colonPointer) {
         formatErr();
