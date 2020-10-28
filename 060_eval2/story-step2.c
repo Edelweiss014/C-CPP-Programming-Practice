@@ -9,7 +9,7 @@
 //      outputs them to stdout. 
 // Argument(s): the name of the file to be parsed
 int main(int argc, char ** argv) {
-    checkArgs(argc, 2);
+    checkArgs(argc, 2, -1);
     FILE * f = openFile(argv[1]);
     catarray_t * thisCatArr = collectWords(f);
     printCatArr(thisCatArr);

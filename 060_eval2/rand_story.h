@@ -13,9 +13,10 @@
 //      provided in the command line, exits with a
 //      failure state
 // Parameter(s): providedNum: the existing number of 
-//      arguments; rightNum: the right number of 
-//      arguments with a size_t type
-void checkArgs (size_t providedNum, size_t rightNum);
+//      arguments; rightNum1: the right number of 
+//      arguments; rightNUm2: the second choice of the
+//      right number of args, -1 when unnecessary
+void checkArgs (size_t providedNum, int rightNum1, int rightNum2);
 
 // openFile: opens the file according to the file
 //      name; exits in a failure state if the file
@@ -65,7 +66,7 @@ long isValidInt (const char * thisCat, size_t usedNum);
 //      special category with words that are used
 //      previously
 // Output(s): the final choice of the word, to stdout
-void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed);
+void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed, int noRepeat);
 
 // parseStory: using the provided file stream,
 //      find the blanks and replace them with
@@ -73,11 +74,21 @@ void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed);
 //      catarray
 // Parameter(s): f: a file stream to read; 
 //      cat: a catarray with words of different
-//      categories stored
+//      categories stored; noRepeat: specify the
+//      requirement that no repeated words should
+//      be used
 // Output(s): parsed story, to stdout
-void parseStory (FILE * f, catarray_t * cat);
+void parseStory (FILE * f, catarray_t * cat, int noRepeat);
 
-// catInArr: check whether a category is already
+// wordInCat: checks whether a word is already in a
+//      certain category
+// Parameter(s): thisWord: the word to be found;
+//      thisCat: the category to be checked
+// Return(s): the index of the word in the category;
+//      -1 when the word does not exist
+int wordInCat (const char * thisWord, category_t * thisCat);
+
+// catInArr: checks whether a category is already
 //      in the catarray
 // Parameter(s): thisCategory: the category to be
 //      checked; catArr: the corresponding catarray

@@ -13,11 +13,11 @@
 // Argument(s): the name of the file to be parsed, 
 //      1 for words and 1 for story template
 int main(int argc, char ** argv) {
-    checkArgs(argc, 3);
+    checkArgs(argc, 3, -1);
     FILE * f_words = openFile(argv[1]);
     FILE * f_story = openFile(argv[2]);
     catarray_t * thisCatArr = collectWords(f_words);
-    parseStory(f_story, thisCatArr);
+    parseStory(f_story, thisCatArr, 0);
     freeCats(thisCatArr);
     closeFile(f_words);
     closeFile(f_story);

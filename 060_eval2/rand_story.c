@@ -10,12 +10,19 @@
 //      provided in the command line, exits with a
 //      failure state
 // Parameter(s): providedNum: the existing number of 
-//      arguments; rightNum: the right number of 
-//      arguments with a size_t type
-void checkArgs (size_t providedNum, size_t rightNum) {
-    if (providedNum != rightNum) {
+//      arguments; rightNum1: the right number of 
+//      arguments; rightNUm2: the second choice of the
+//      right number of args, -1 when unnecessary
+void checkArgs (size_t providedNum, int rightNum1, int rightNum2) {
+    if (rightNum2 == -1 && providedNum != rightNum1) {
         fprintf(stderr, "Wrong number of args\n");
         exit(EXIT_FAILURE);
+        return;
+    }
+    else if (providedNum != rightNum1 && providedNum != rightNum2) {
+        fprintf(stderr, "Wrong number of args\n");
+        exit(EXIT_FAILURE);
+        return;
     }
     return;
 }
@@ -111,7 +118,7 @@ long isValidInt (const char * thisCat, size_t usedNum) {
 //      special category with words that are used
 //      previously
 // Output(s): the final choice of the word, to stdout
-void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed) {
+void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed, int noRepeat) {
     // case 0: simply prints out "cat"
     if (cat == NULL) {
         printf("%s", chooseWord(thisCat, cat));
@@ -130,7 +137,10 @@ void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed) {
     if (catInArr(thisCat, cat) == -1) {
         formatErr();
     }
-    thisWord = strdup(chooseWord(thisCat, cat));
+    do {
+        free(thisWord);
+        thisWord = strdup(chooseWord(thisCat, cat));
+    } while (noRepeat == 1 && wordInCat(thisWord, wordUsed) != -1);
     printf("%s", thisWord);
     storeWord(thisWord, wordUsed);
     return;
@@ -139,12 +149,14 @@ void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed) {
 // parseStory: using the provided file stream,
 //      find the blanks and replace them with
 //      suitable words by referring to the
-//      catarray.
+//      catarray
 // Parameter(s): f: a file stream to read; 
 //      cat: a catarray with words of different
-//      categories stored
+//      categories stored; noRepeat: specify the
+//      requirement that no repeated words should
+//      be used
 // Output(s): parsed story, to stdout
-void parseStory (FILE * f, catarray_t * cat) {
+void parseStory (FILE * f, catarray_t * cat, int noRepeat) {
     // Initialize the special category to store
     //      the used words
     category_t wordUsed;
@@ -181,14 +193,32 @@ void parseStory (FILE * f, catarray_t * cat) {
             formatErr();
             break;
         }
-        makePrintChoice(thisCat, cat, &wordUsed);
+        makePrintChoice(thisCat, cat, &wordUsed, noRepeat);
         free(thisCat);
     }
     freeWordsInCat(&wordUsed);
     return;
 }
 
-// catInArr: check whether a category is already
+// wordInCat: checks whether a word is already in a
+//      certain category
+// Parameter(s): thisWord: the word to be found;
+//      thisCat: the category to be checked
+// Return(s): the index of the word in the category;
+//      -1 when the word does not exist
+int wordInCat (const char * thisWord, category_t * thisCat) {
+    if (thisCat == NULL) {
+        nullPointerErr();
+    }
+    for (size_t i = 0; i < thisCat->n_words; i++) {
+        if (strcmp(thisWord, thisCat->words[i]) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// catInArr: checks whether a category is already
 //      in the catarray
 // Parameter(s): thisCategory: the category to be
 //      checked; catArr: the corresponding catarray
