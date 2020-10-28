@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <errno.h>
+#include <limits.h>
 #include "rand_story.h"
 
 // checkArgs: if there are wrong number of arguments
@@ -69,6 +72,70 @@ void nullPointerErr () {
     return;
 }
 
+void rangeErr () {
+    fprintf(stderr, "Num out of range\n");
+    exit(EXIT_FAILURE);
+    return;
+}
+
+// isValidInt: decide whether a category string can
+//      be converted to an int larger than 0
+// Parameter(s): the category string
+// Return(s): if the string contains characters(s)
+//      other than digits, returns -1; if the string
+//      is a number out of the range of a long int,
+//      exits with a failure state; if the string is
+//      a number larger than the number of the used
+//      words, exits with a failure state
+long isValidInt (const char * thisCat, size_t usedNum) {
+    long converted = 0;
+    for (size_t i = 0; i < strlen(thisCat); i++) {
+        if (!isdigit(thisCat[i])) {
+            return -1;
+        }
+    }
+    errno = 0;
+    converted = strtol(thisCat, NULL, 10);
+    if (errno == ERANGE || converted > (long) usedNum) {
+        rangeErr();
+    }
+    return converted;
+}
+
+// makePrintChoice: choose which word to use to
+//      replace the category name in the story
+//      template
+// Parameter(s): thisCat: the category name in the
+//      story template; cat: the catarray which
+//      provides the words to print; wordUsed: the
+//      special category with words that are used
+//      previously
+// Output(s): the final choice of the word, to stdout
+void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed) {
+    // case 0: simply prints out "cat"
+    if (cat == NULL) {
+        printf("%s", chooseWord(thisCat, cat));
+        return;
+    }
+    char * thisWord = NULL;
+    // case 1: look up for previously used word
+    long thisCatToInt = isValidInt(thisCat, wordUsed->n_words);
+    if (thisCatToInt > 0) {
+        printf("%s", wordUsed->words[wordUsed->n_words - thisCatToInt]);
+        thisWord = strdup(wordUsed->words[wordUsed->n_words - thisCatToInt]);
+        storeWord(thisWord, wordUsed);
+        return;
+    }
+    // case 2: randomly chooses words
+    if (catInArr(thisCat, cat) == -1) {
+        formatErr();
+    }
+    thisWord = strdup(chooseWord(thisCat, cat));
+    printf("%s", thisWord);
+    storeWord(thisWord, wordUsed);
+    return;
+}
+
 // parseStory: using the provided file stream,
 //      find the blanks and replace them with
 //      suitable words by referring to the
@@ -78,6 +145,11 @@ void nullPointerErr () {
 //      categories stored
 // Output(s): parsed story, to stdout
 void parseStory (FILE * f, catarray_t * cat) {
+    // Initialize the special category to store
+    //      the used words
+    category_t wordUsed;
+    wordUsed.n_words = 0;
+    wordUsed.words = NULL;
     int c;
     // categoryFinished: check whether the cats
     //      are closed by an underscore
@@ -109,9 +181,10 @@ void parseStory (FILE * f, catarray_t * cat) {
             formatErr();
             break;
         }
-        printf("%s", chooseWord(thisCat, cat));;
+        makePrintChoice(thisCat, cat, &wordUsed);
         free(thisCat);
     }
+    freeWordsInCat(&wordUsed);
     return;
 }
 
@@ -219,7 +292,22 @@ void printCatArr (catarray_t * thisCatArr) {
     return;
 }
 
-// freeCats: free the memory allocated to story
+// freeSingleCat: free the memory allocated to store
+//      a certain category (except its name, since not
+//      all category has its name allocated)
+// Parameter(s): thisCat: the category to be freed
+void freeWordsInCat (category_t * thisCat) {
+    if (thisCat == NULL) {
+        return;
+    }
+    for (size_t i = 0; i < thisCat->n_words; i++) {
+        free(thisCat->words[i]);
+    }
+    free(thisCat->words);
+    return;
+}
+
+// freeCats: free the memory allocated to store
 //      the catarray
 // Parameter(s): thisCatArr: the catarray to be
 //      freed
@@ -229,11 +317,7 @@ void freeCats(catarray_t * thisCatArr) {
     }
     for (size_t i = 0; i < thisCatArr->n; i++) {
         // free each category
-        for (size_t j = 0; j < thisCatArr->arr[i].n_words; j++) {
-            // free each word
-            free(thisCatArr->arr[i].words[j]);
-        }
-        free(thisCatArr->arr[i].words);
+        freeWordsInCat(&(thisCatArr->arr[i]));
         free(thisCatArr->arr[i].name);
     }
     free(thisCatArr->arr);

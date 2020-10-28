@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <errno.h>
 
 #include "provided.h"
 
@@ -42,6 +44,28 @@ void memErr ();
 //      error message to stderr indicating the
 //      error null pointer
 void nullPointerErr ();
+
+// isValidInt: decide whether a category string can
+//      be converted to an int larger than 0
+// Parameter(s): the category string
+// Return(s): if the string contains characters(s)
+//      other than digits, returns -1; if the string
+//      is a number out of the range of a long int,
+//      exits with a failure state; if the string is
+//      a number larger than the number of the used
+//      words, exits with a failure state
+long isValidInt (const char * thisCat, size_t usedNum);
+
+// makePrintChoice: choose which word to use to
+//      replace the category name in the story
+//      template
+// Parameter(s): thisCat: the category name in the
+//      story template; cat: the catarray which
+//      provides the words to print; wordUsed: the
+//      special category with words that are used
+//      previously
+// Output(s): the final choice of the word, to stdout
+void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed);
 
 // parseStory: using the provided file stream,
 //      find the blanks and replace them with
@@ -87,7 +111,13 @@ catarray_t * collectWords (FILE * f);
 //      categories, to stdout
 void printCatArr (catarray_t * thisCatArr);
 
-// freeCats: free the memory allocated to story
+// freeWordsInCat: free the memory allocated to store
+//      words in a single category
+// Parameter(s): thisCat: the category  with its words
+//      to be freed
+void freeWordsInCat (category_t * thisCat);
+
+// freeCats: free the memory allocated to store
 //      the catarray
 // Parameter(s): thisCatArr: the catarray to be
 //      freed
