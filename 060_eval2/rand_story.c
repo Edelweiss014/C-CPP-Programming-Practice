@@ -17,12 +17,10 @@ void checkArgs (size_t providedNum, int rightNum1, int rightNum2) {
     if (rightNum2 == -1 && providedNum != rightNum1) {
         fprintf(stderr, "Wrong number of args\n");
         exit(EXIT_FAILURE);
-        return;
     }
     else if (providedNum != rightNum1 && providedNum != rightNum2) {
         fprintf(stderr, "Wrong number of args\n");
         exit(EXIT_FAILURE);
-        return;
     }
     return;
 }
@@ -177,7 +175,7 @@ void parseStory (FILE * f, catarray_t * cat, int noRepeat) {
         categoryFinished = 0;
         char * thisCat = NULL;
         size_t thisCatLen = 0;
-        while ((c = fgetc(f)) != EOF) {
+        while ((c = fgetc(f)) != '\n') {
             if (c == '_') {
                 categoryFinished = 1;
                 break;
