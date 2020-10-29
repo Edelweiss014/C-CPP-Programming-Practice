@@ -17,10 +17,12 @@ void checkArgs (size_t providedNum, int rightNum1, int rightNum2) {
     if (rightNum2 == -1 && providedNum != rightNum1) {
         fprintf(stderr, "Wrong number of args\n");
         exit(EXIT_FAILURE);
+        return;
     }
     else if (providedNum != rightNum1 && providedNum != rightNum2) {
         fprintf(stderr, "Wrong number of args\n");
         exit(EXIT_FAILURE);
+        return;
     }
     return;
 }
@@ -135,12 +137,19 @@ void makePrintChoice (char * thisCat, catarray_t * cat, category_t * wordUsed, i
     if (catInArr(thisCat, cat) == -1) {
         formatErr();
     }
-    do {
-        free(thisWord);
-        thisWord = strdup(chooseWord(thisCat, cat));
-    } while (noRepeat == 1 && wordInCat(thisWord, wordUsed) != -1);
+    thisWord = strdup(chooseWord(thisCat, cat));
     printf("%s", thisWord);
     storeWord(thisWord, wordUsed);
+    if (noRepeat == 1) {
+        int catIndex = -1; 
+        int wordIndex = -1;
+        if ((catIndex = catInArr(thisCat, cat)) > -1) {
+            wordIndex = wordInCat(thisWord, &(cat->arr[catIndex]));
+        }
+        if (wordIndex > -1 && catIndex > -1) {
+            removeWord(wordIndex, catIndex, cat);
+        }
+    }
     return;
 }
 
@@ -236,6 +245,8 @@ int catInArr (const char * thisCategory, catarray_t * catArr) {
 
 // storeWord: store the word in the category and increment
 //      the word num of the category
+// Parameter(s): word: the word to be stored (which is already
+//      allocated); thisCate: the target category
 void storeWord (char * word, category_t * thisCate) {
     if (thisCate == NULL) {
         nullPointerErr();
@@ -243,6 +254,35 @@ void storeWord (char * word, category_t * thisCate) {
     thisCate->n_words++;
     thisCate->words = realloc(thisCate->words, thisCate->n_words * sizeof(* thisCate->words));
     thisCate->words[thisCate->n_words - 1] = word;
+    return;
+}
+
+// removeWord: remove the word in a certain category and
+//      decrement the word num of the category
+// Parameter(s): wordIndex: the index of word to be removed; 
+//      catIndex: the index of the category to be modified
+//      catArr: the catarray to be modified
+void removeWord (int wordIndex, int catIndex, catarray_t * catArr) {
+    if (wordIndex == -1 || catIndex == -1) {
+        return;
+    }
+    // the words array in the catarray: 
+    //      catArr->arr[catIndex].words
+    char ** newWords = malloc((catArr->arr[catIndex].n_words - 1) * sizeof (* newWords));
+    // use j to trace the index of the newWords arr
+    int j = 0;
+    for (int i = 0; i < catArr->arr[catIndex].n_words; i++) {
+        if (i == wordIndex) {
+            continue;
+        }
+        else {
+            newWords[j] = strdup(catArr->arr[catIndex].words[i]);
+            j++;
+        }
+    }
+    freeWordsInCat(&(catArr->arr[catIndex]));
+    catArr->arr[catIndex].words = newWords;
+    catArr->arr[catIndex].n_words--;
     return;
 }
 

@@ -1,0 +1,4 @@
+animal:walrut
+:dragon
+place:cave
+adjective:peculiar

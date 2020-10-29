@@ -98,7 +98,16 @@ int catInArr (const char * thisCategory, catarray_t * catArr);
 
 // storeWord: store the word in the category and increment
 //      the word num of the category
+// Parameter(s): word: the word to be stored (which is already
+//      allocated); thisCate: the target category
 void storeWord (char * word, category_t * thisCate);
+
+// removeWord: remove the word in a certain category and
+//      decrement the word num of the category
+// Parameter(s): wordIndex: the index of word to be removed; 
+//      catIndex: the index of the category to be modified
+//      catArr: the catarray to be modified
+void removeWord (int wordIndex, int catIndex, catarray_t * catArr);
 
 // parseWord: reads a line with a word and its
 //      category and stores the word in the array
