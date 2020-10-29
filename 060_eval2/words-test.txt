@@ -1,0 +1,5 @@
+animal:walrut
+place:cave
+adjective:peculiar
+animal:dragon
+adjective:peaceful

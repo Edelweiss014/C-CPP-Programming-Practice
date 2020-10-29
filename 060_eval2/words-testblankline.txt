@@ -1,0 +1,7 @@
+animal:walrut
+adjective:peculiar
+animal:dragon
+place:peaceful
+
+animal:sheep
+place:house
