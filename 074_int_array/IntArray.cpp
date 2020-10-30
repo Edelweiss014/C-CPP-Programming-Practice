@@ -1,6 +1,6 @@
 #include "IntArray.h"
 #include <assert.h>
-#include <iostream>
+#include <ostream>
 
 IntArray::IntArray() : data(NULL), numElements(0) {
 
@@ -59,10 +59,14 @@ bool IntArray::operator!=(const IntArray & rhs) const {
 }
 
 std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
-    std::cout << "{";
-    for (int i = 0; i < rhs.size(); i++) {
-        std::cout << rhs[i] << " ";
+    if (rhs.size() == 0) {
+        s << "{}";
+        return s;
     }
-    std::cout << "}" << std::endl;
+    s << "{";
+    for (int i = 0; i < rhs.size() - 1; i++) {
+        s << rhs[i] << ", ";
+    }
+    s << rhs[rhs.size()] << "}";
     return s;
 }
