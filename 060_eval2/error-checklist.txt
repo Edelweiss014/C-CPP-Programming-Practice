@@ -1,0 +1,24 @@
+invalid arguments
+	wrong number of args - checked
+	invalid file(s) - checked
+	things other than filename or "-n" - checked
+empty file(s)
+	empty words.txt - checked
+	empty story.txt - checked
+various categories
+	empty categorie(s)
+	characters
+	numbers
+	numbers+characters
+	space
+various words
+	empty word(s)
+	colon
+	characters
+	numbers
+invalid categories
+	a line without a colon
+choices unavailable
+	no words for a category
+	no words for no-repeat option
+	to large int for step 3

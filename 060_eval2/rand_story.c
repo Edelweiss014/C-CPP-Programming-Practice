@@ -336,7 +336,9 @@ catarray_t * collectWords (FILE * f) {
     int len = 0;
     char * line = NULL;
     while ((len = getline(&line, &sz, f)) >= 0) {
-        line[strlen(line) - 1] = '\0';
+        if (line[strlen(line) - 1] == '\n') {
+            line[strlen(line) - 1] = '\0';
+        }
         parseWord(line, thisCatArr);
     }
     free(line);
