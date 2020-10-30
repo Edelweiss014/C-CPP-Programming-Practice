@@ -1,6 +1,6 @@
-Grading at 10/30/2020:12:56:18.208745
-For commit ID 004e9ba5dc7e0e78e6b3aa338eba1736d49deff6
-Grading at Fri Oct 30 20:56:12 CST 2020
+Grading at 10/30/2020:13:12:47.679668
+For commit ID 46e4b68021fcd6a80963b0609dc4460c3fd9ab93
+Grading at Fri Oct 30 21:12:40 CST 2020
 Attempting to compile:
 rm -f *.o  *~ intArrayTest
 #################################################
@@ -10,9 +10,7 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase2:
-Your output is correct
-  - Valgrind was clean (no errors, no memory leaks)
-valgrind was clean
+Your output is incorrect
 #################################################
 testcase3:
 Your output is incorrect
