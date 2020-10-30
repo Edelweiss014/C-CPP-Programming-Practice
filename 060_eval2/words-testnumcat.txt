@@ -1,0 +1,4 @@
+animal:walrut
+516370910188:dragon
+place:cave
+adjective:peculiar

@@ -6,19 +6,19 @@ empty file(s)
 	empty words.txt - checked
 	empty story.txt - checked
 various categories
-	empty categorie(s)
-	characters
-	numbers
-	numbers+characters
-	space
+	empty categorie(s) - checked
+	characters - checked
+	numbers - checked
+	numbers+characters - checked
+	space - checked
 various words
-	empty word(s)
-	colon
-	characters
-	numbers
+	empty word(s) - checked
+	colon - checked
+	characters - checked
+	numbers - checked
 invalid categories
-	a line without a colon
+	a line without a colon - checked
 choices unavailable
-	no words for a category
-	no words for no-repeat option
-	to large int for step 3
+	no words for a category - checked
+	no words for no-repeat option - checked
+	to large int for step 3 - checked

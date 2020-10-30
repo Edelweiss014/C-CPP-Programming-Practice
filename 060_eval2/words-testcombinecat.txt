@@ -1,0 +1,6 @@
+animal:walrut
+123abv:dragon
+place:cave
+adjective:peculiar
+place:fountain
+adjective:peaceful
