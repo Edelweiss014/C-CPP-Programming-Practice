@@ -10,9 +10,12 @@
 //      by "cat".
 // Argument(s): the name of the file to be parsed
 int main(int argc, char ** argv) {
+    // checks the invalid args/files
     checkArgs(argc, 2, -1);
     FILE * f = openFile(argv[1]);
+    // finishes story printing
     parseStory(f, NULL, 0);
+    // closes the files
     closeFile(f);
     return EXIT_SUCCESS;
 }

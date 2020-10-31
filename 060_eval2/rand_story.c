@@ -101,6 +101,7 @@ long isValidInt (const char * thisCat, size_t usedNum) {
             return -1;
         }
     }
+    // Check range error
     errno = 0;
     converted = strtol(thisCat, NULL, 10);
     if (errno == ERANGE || converted > (long) usedNum) {
@@ -193,6 +194,7 @@ void parseStory (FILE * f, catarray_t * cat, int noRepeat) {
             thisCat = realloc(thisCat, thisCatLen * sizeof(* thisCat));
             thisCat[thisCatLen - 1] = c;
         }
+        // saves the new character into the category
         thisCatLen++;
         thisCat = realloc(thisCat, thisCatLen * sizeof(* thisCat));
         thisCat[thisCatLen - 1] = '\0';
@@ -300,6 +302,7 @@ void parseWord (const char * line, catarray_t * catArr) {
     char * thisWord = strdup(colonPointer + 1);
     int index;
     if ((index = catInArr(thisCategory, catArr)) == -1) {
+        // Case 0: the category does not exist
         catArr->n++;
         catArr->arr = realloc(catArr->arr, catArr->n * sizeof(* catArr->arr));
         // new category initialization
@@ -309,6 +312,7 @@ void parseWord (const char * line, catarray_t * catArr) {
         storeWord(thisWord, &(catArr->arr[catArr->n - 1]));
     }
     else {
+        // Case 1: the category exists
         storeWord(thisWord, &(catArr->arr[index]));
         free(thisCategory);
     }
@@ -337,6 +341,8 @@ catarray_t * collectWords (FILE * f) {
     char * line = NULL;
     while ((len = getline(&line, &sz, f)) >= 0) {
         if (line[strlen(line) - 1] == '\n') {
+            // If the line ends with '\n', 
+            //    remove the '\n'
             line[strlen(line) - 1] = '\0';
         }
         parseWord(line, thisCatArr);
