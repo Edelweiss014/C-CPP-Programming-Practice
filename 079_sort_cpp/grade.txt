@@ -1,0 +1,19 @@
+Grading at 11/02/2020:13:57:36.311308
+For commit ID c305877d6f9b991a8dd351ccb2da80bfcce029ad
+Grading at Mon Nov  2 21:57:36 CST 2020
+Looking for malloc in your files
+No uses found (good).
+Looking for free in your files
+No uses found (good).
+Looking for FILE in your files
+No uses found (good).
+Looking for realloc in your files
+No uses found (good).
+Looking for qsort in your files
+No uses found (good).
+Looking for printf in your files
+No uses found (good).
+Attempting to compile with make
+The code did not compile!
+
+Overall Grade: F
