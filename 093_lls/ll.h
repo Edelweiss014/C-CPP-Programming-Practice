@@ -28,7 +28,7 @@ private:
     int size;
 public:
     LinkedList() : head(NULL), tail(NULL), size(0) { }
-    LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(rhs.size) {
+    LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL), size(0) {
         Node * temp = rhs.head;
         while (temp != NULL) {
             addBack(temp->data);
@@ -37,17 +37,17 @@ public:
     }
     LinkedList & operator=(const LinkedList & rhs) {
         if (this != &rhs) {
-            while (this->head != NULL) {
-                Node * temp = head->next;
-                delete head;
-                head = temp;
+            LinkedList tempList(rhs);
+            for (int i = 0; i < this->size; i++) {
+                Node * temp = this->head;
+                this->head = this->head->next;
+                delete temp;
             }
-            size = rhs.getSize();
-            Node * rhs_curr = rhs.head;
-            while (rhs_curr != NULL) {
-                this->addBack(rhs_curr->data);
-                rhs_curr = rhs_curr->next;
-            }
+            this->size = rhs.size;
+            this->head = tempList.head;
+            this->tail = tempList.tail;
+            tempList.head = NULL;
+            tempList.tail = NULL;
         }
         return *this;
     }
