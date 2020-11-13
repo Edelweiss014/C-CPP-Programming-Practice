@@ -1,23 +1,38 @@
-Grading at 11/13/2020:08:09:19.133264
-For commit ID 11ca255ca9771bc5ebdcaf119d610fac0e111c18
-Grading at Fri Nov 13 16:09:16 CST 2020
+Grading at 11/13/2020:08:20:09.832528
+For commit ID f9d649aef9e2ba19eba9a56f2e4b0c9349213f62
+Grading at Fri Nov 13 16:20:09 CST 2020
 -----------------------------------------------
 testcase 1 : Testing with LinkedList<int>
 ...compiling...
-The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+In file included from tester.cpp:1:0:
+ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = int]’:
+tester.cpp:94:11:   required from here
+ll.h:40:20: error: unused variable ‘this_curr’ [-Werror=unused-variable]
+             Node * this_curr = this->head;
+                    ^~~~~~~~~
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 2 : Testing with LinkedList<std::string>
 ...compiling...
-The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+In file included from tester.cpp:1:0:
+ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = std::__cxx11::basic_string<char>]’:
+tester.cpp:94:11:   required from here
+ll.h:40:20: error: unused variable ‘this_curr’ [-Werror=unused-variable]
+             Node * this_curr = this->head;
+                    ^~~~~~~~~
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
 -----------------------------------------------
 testcase 3 : Testing with LinkedList<(a custom class we wrote)>
 ...compiling...
-The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+In file included from tester.cpp:1:0:
+ll.h: In instantiation of ‘LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>&) [with T = Tester]’:
+tester.cpp:94:11:   required from here
+ll.h:40:20: error: unused variable ‘this_curr’ [-Werror=unused-variable]
+             Node * this_curr = this->head;
+                    ^~~~~~~~~
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
 
 Overall Grade: F
