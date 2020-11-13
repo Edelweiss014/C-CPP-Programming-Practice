@@ -37,7 +37,6 @@ public:
     }
     LinkedList & operator=(const LinkedList & rhs) {
         if (this != &rhs) {
-            Node * this_curr = this->head;
             while (this->head != NULL) {
                 Node * temp = head->next;
                 delete head;
