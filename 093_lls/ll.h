@@ -46,6 +46,7 @@ public:
             this->size = rhs.size;
             this->head = tempList.head;
             this->tail = tempList.tail;
+            tempList.size = 0;
             tempList.head = NULL;
             tempList.tail = NULL;
         }

@@ -1,0 +1,2 @@
+Read two C strings by line
+visual studio code them
