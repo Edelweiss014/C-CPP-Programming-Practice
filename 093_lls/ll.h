@@ -37,17 +37,18 @@ public:
     }
     LinkedList & operator=(const LinkedList & rhs) {
         if (this != &rhs) {
-            LinkedList tempList(rhs);
-            for (int i = 0; i < this->size; i++) {
-                Node * temp = this->head;
-                this->head = this->head->next;
-                delete temp;
+            Node * this_curr = this->head;
+            while (this->head != NULL) {
+                Node * temp = head->next;
+                delete head;
+                head = temp;
             }
-            this->size = rhs.size;
-            this->head = tempList.head;
-            this->tail = tempList.tail;
-            tempList.head = NULL;
-            tempList.tail = NULL;
+            size = rhs.getSize();
+            Node * rhs_curr = rhs.head;
+            while (rhs_curr != NULL) {
+                this->addBack(rhs_curr->data);
+                rhs_curr = rhs_curr->next;
+            }
         }
         return *this;
     }
