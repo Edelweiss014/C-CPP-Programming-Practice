@@ -20,7 +20,7 @@ private:
         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
     };
     Node * root;
-
+public:
     void destroy (Node * curr) {
         if (curr != NULL) {
             destroy(curr->left);
@@ -39,7 +39,7 @@ private:
         helper->right = copyPreOrder(rhs_curr->right);
         return helper;
     }
-public:
+
     BstMap () : root(NULL) { }
     BstMap (const BstMap & rhs) : root (NULL) {
         root = copyPreOrder(rhs.root);
@@ -102,14 +102,16 @@ public:
                     *curr = temp;
                 }
                 else {
-                    Node ** temp = curr;
-                    temp = &(*temp)->left;
-                    while ((*temp)->right != NULL) {
-                        temp = &(*temp)->right;
+                    Node ** temp_curr = curr;
+                    curr = &(*curr)->left;
+                    while ((*curr)->right != NULL) {
+                        curr = &(*curr)->right;
                     }
-                    (*curr)->key = (*temp)->key;
-                    (*curr)->value = (*temp)->value;
-                    delete (*temp);
+                    (*temp_curr)->key = (*curr)->key;
+                    (*temp_curr)->value = (*curr)->value;
+                    Node * curr_left = &(*curr)->left;
+                    delete (*curr);
+                    *curr = curr_left;
                 }
             }
         }
