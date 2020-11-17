@@ -1,0 +1,860 @@
+Grading at 11/17/2020:11:24:29.968023
+For commit ID 98fe1aac03d0cf64efb81782f22596b3db90bc5a
+Grading at Tue Nov 17 19:24:28 CST 2020
+-----------------------------------------------
+testcase 1 : Testing with BstMap<int,int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<int, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<int, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<int, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = int]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = int; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = int; V = int]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = int; V = int]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<int, int>::Node::Node(const int&, const int&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = int; V = int]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<int, int>::Node::Node(const BstMap<int, int>::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = int]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 2 : Testing with BstMap<int,std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<int, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<int, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<int, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = int; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = int; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = int; V = std::__cxx11::basic_string<char>]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<int, std::__cxx11::basic_string<char> >::Node::Node(const int&, const std::__cxx11::basic_string<char>&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = int; V = std::__cxx11::basic_string<char>]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<int, std::__cxx11::basic_string<char> >::Node::Node(const BstMap<int, std::__cxx11::basic_string<char> >::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<int, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<int, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<int, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = Tester]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = int; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = int; V = Tester]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = int; V = Tester]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<int, Tester>::Node::Node(const int&, const Tester&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = int; V = Tester]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<int, Tester>::Node::Node(const BstMap<int, Tester>::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = int; V = Tester]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 4 : Testing with BstMap<std::string,int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = int]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = std::__cxx11::basic_string<char>; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = int]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = int]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<std::__cxx11::basic_string<char>, int>::Node::Node(const std::__cxx11::basic_string<char>&, const int&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = int]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<std::__cxx11::basic_string<char>, int>::Node::Node(const BstMap<std::__cxx11::basic_string<char>, int>::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = int]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 5 : Testing with BstMap<std::string,std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node::Node(const std::__cxx11::basic_string<char>&, const std::__cxx11::basic_string<char>&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node::Node(const BstMap<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<std::__cxx11::basic_string<char>, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = Tester]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<std::__cxx11::basic_string<char>, Tester>::Node::Node(const std::__cxx11::basic_string<char>&, const Tester&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = std::__cxx11::basic_string<char>; V = Tester]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<std::__cxx11::basic_string<char>, Tester>::Node::Node(const BstMap<std::__cxx11::basic_string<char>, Tester>::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = std::__cxx11::basic_string<char>; V = Tester]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 7 : Testing with BstMap<(a custom class we wrote),int>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<Tester, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<Tester, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<Tester, int>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = int]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = Tester; V = int]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = Tester; V = int]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = Tester; V = int]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<Tester, int>::Node::Node(const Tester&, const int&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = Tester; V = int]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<Tester, int>::Node::Node(const BstMap<Tester, int>::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = int]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<Tester, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<Tester, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<Tester, std::__cxx11::basic_string<char> >’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = Tester; V = std::__cxx11::basic_string<char>]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<Tester, std::__cxx11::basic_string<char> >::Node::Node(const Tester&, const std::__cxx11::basic_string<char>&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = Tester; V = std::__cxx11::basic_string<char>]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<Tester, std::__cxx11::basic_string<char> >::Node::Node(const BstMap<Tester, std::__cxx11::basic_string<char> >::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = std::__cxx11::basic_string<char>]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+-----------------------------------------------
+testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
+...compiling...
+In file included from 89-tester.cpp:1:0:
+bstmap.h:10:27: error: expected class-name before ‘{’ token
+ class BstMap : public Map {
+                           ^
+bstmap.h:113:18: error: declaration of ‘~Map’ as member of ‘BstMap<K, V>’
+     virtual ~Map() {
+                  ^
+bstmap.h: In member function ‘virtual void BstMap<K, V>::remove(const K&)’:
+bstmap.h:101:13: error: expected ‘;’ before ‘}’ token
+             }
+             ^
+89-tester.cpp: At global scope:
+89-tester.cpp:55:9: error: ‘Map’ does not name a type; did you mean ‘BstMap’?
+ typedef Map<KEYTYPE,VALTYPE> MapTy;
+         ^~~
+         BstMap
+89-tester.cpp: In function ‘int main()’:
+89-tester.cpp:71:3: error: ‘MapTy’ was not declared in this scope
+   MapTy * m = bmt;
+   ^~~~~
+89-tester.cpp:71:3: note: suggested alternative: ‘BSTMapTy’
+   MapTy * m = bmt;
+   ^~~~~
+   BSTMapTy
+89-tester.cpp:71:11: error: ‘m’ was not declared in this scope
+   MapTy * m = bmt;
+           ^
+89-tester.cpp:71:11: note: suggested alternative: ‘tm’
+   MapTy * m = bmt;
+           ^
+           tm
+89-tester.cpp:99:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:134:14: error: ‘ptr’ was not declared in this scope
+       MapTy* ptr = (((i+j)&1)==0)? m : m2;
+              ^~~
+89-tester.cpp:164:10: error: deleting object of polymorphic class type ‘BstMap<Tester, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:194:10: error: deleting object of polymorphic class type ‘BstMap<Tester, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete bmt;
+          ^~~
+89-tester.cpp:195:10: error: deleting object of polymorphic class type ‘BstMap<Tester, Tester>’ which has non-virtual destructor might cause undefined behavior [-Werror=delete-non-virtual-dtor]
+   delete m2;
+          ^~
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = Tester]’:
+89-tester.cpp:119:26:   required from here
+bstmap.h:94:20: error: no matching function for call to ‘std::invalid_argument::invalid_argument()’
+         throw std::invalid_argument();
+                    ^~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/7/bits/ios_base.h:44:0,
+                 from /usr/include/c++/7/ios:42,
+                 from /usr/include/c++/7/ostream:38,
+                 from /usr/include/c++/7/iostream:39,
+                 from bstmap.h:3,
+                 from 89-tester.cpp:1:
+/usr/include/c++/7/stdexcept:161:14: note: candidate: std::invalid_argument::invalid_argument(const string&)
+     explicit invalid_argument(const string& __arg) _GLIBCXX_TXN_SAFE;
+              ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:161:14: note:   candidate expects 1 argument, 0 provided
+/usr/include/c++/7/stdexcept:158:9: note: candidate: std::invalid_argument::invalid_argument(const std::invalid_argument&)
+   class invalid_argument : public logic_error
+         ^~~~~~~~~~~~~~~~
+/usr/include/c++/7/stdexcept:158:9: note:   candidate expects 1 argument, 0 provided
+In file included from 89-tester.cpp:1:0:
+bstmap.h: In instantiation of ‘void BstMap<K, V>::remove(const K&) [with K = Tester; V = Tester]’:
+89-tester.cpp:197:1:   required from here
+bstmap.h:100:17: error: statement has no effect [-Werror=unused-value]
+                 curr
+                 ^~~~
+bstmap.h: In instantiation of ‘BstMap<K, V>::Node* BstMap<K, V>::add_helper(BstMap<K, V>::Node*, const K&, const V&) [with K = Tester; V = Tester]’:
+bstmap.h:78:19:   required from ‘void BstMap<K, V>::add(const K&, const V&) [with K = Tester; V = Tester]’
+89-tester.cpp:197:1:   required from here
+bstmap.h:30:26: error: no matching function for call to ‘BstMap<Tester, Tester>::Node::Node(const Tester&, const Tester&, NULL, NULL)’
+             Node * ans = new Node (key, value, NULL, NULL);
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bstmap.h:18:9: note: candidate: BstMap<K, V>::Node::Node(const K&, const V&) [with K = Tester; V = Tester]
+         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
+         ^~~~
+bstmap.h:18:9: note:   candidate expects 2 arguments, 4 provided
+bstmap.h:12:11: note: candidate: BstMap<Tester, Tester>::Node::Node(const BstMap<Tester, Tester>::Node&)
+     class Node {
+           ^~~~
+bstmap.h:12:11: note:   candidate expects 1 argument, 4 provided
+bstmap.h: In member function ‘const V& BstMap<K, V>::lookup(const K&) const [with K = Tester; V = Tester]’:
+bstmap.h:95:5: error: control reaches end of non-void function [-Werror=return-type]
+     }
+     ^
+cc1plus: all warnings being treated as errors
+The code did not compile.  This test failed.
+
+Overall Grade: F
