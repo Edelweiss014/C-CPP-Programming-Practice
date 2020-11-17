@@ -27,60 +27,6 @@ private:
         }
         return ans;
     }
-    Node * add_helper (Node * curr, const K & key, const V & value) {
-        if (curr == NULL) {
-            Node * ans = new Node (key, value);
-            return ans;
-        }
-        else {
-            if (key < curr->key) {
-                Node * newLeft = add_helper(curr->left, key, value);
-                curr->left = newLeft;
-            }
-            else if (key > curr->key) {
-                 Node * newRight = add_helper(curr->right, key, value);
-                 curr->right = newRight;
-            }
-            else {
-                // same value again
-                curr->value = value;
-            }
-        }
-        return curr;
-    }
-    Node * remove_helper (Node * curr, const K & key) {
-        if (curr == NULL) {
-            return NULL;
-        }
-        if (curr->key == key) {
-            Node * temp = NULL;
-            if (curr->left == NULL) {
-                temp = curr->right; 
-                delete curr;
-                return temp;
-            }
-            else if (curr->right == NULL) {
-                temp = curr->left;
-                delete curr; 
-                return temp;
-            }
-            else {
-                temp = findReplace(curr);
-                curr->key = temp->key;
-                curr->value = temp->value;
-                delete temp;
-                return curr;
-            }
-        }
-        else if (curr->key < key) {
-            curr->right = remove_helper(curr->right, key);
-            return curr;
-        }
-        else {
-            curr->left = remove_helper(curr->left, key);
-            return curr;
-        }
-    }
     void destroy (Node * curr) {
         if (curr != NULL) {
             destroy(curr->left);
@@ -112,8 +58,17 @@ public:
         return *this;
     }
     virtual void add (const K & key, const V & value) {
-        root = add_helper(root, key, value);
-        return;
+        Node ** curr = &root;
+        while (* curr != NULL) {
+            if (key == (*curr)->key) return;
+            if (key < (*curr)->key) {
+                curr = &(*curr)->left;
+            }
+            else {
+                curr = &(*curr)->right;
+            }
+        }
+        *curr = new Node (key, value);
     }
     virtual const V & lookup(const K & key) const throw (std::invalid_argument) {
         Node * curr = root;
@@ -131,7 +86,33 @@ public:
         throw std::invalid_argument("Invalid!");
     }
     virtual void remove(const K & key) {
-        root = remove_helper(root, key);
+        Node ** curr = &root;
+        while (* curr != NULL) {
+            if ((*curr)->key > key) {
+                curr = &(*curr)->left;
+            }
+            else if ((*curr)->key < key) {
+                curr = &(*curr)->right;
+            }
+            else {
+                if ((*curr)->left == NULL) {
+                    Node * temp = (*curr)->right;
+                    delete (*curr);
+                    *curr = temp;
+                }
+                else if ((*curr)->right == NULL) {
+                    Node * temp = (*curr)->left;
+                    delete (*curr);
+                    *curr = temp;
+                }
+                else {
+                    Node * temp = findReplace(*curr);
+                    (*curr)->key = temp->key;
+                    (*curr)->value = temp->value;
+                    delete temp;
+                }
+            }
+        }
         return;
     }
     ~BstMap() {
