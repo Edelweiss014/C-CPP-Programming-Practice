@@ -49,6 +49,9 @@ private:
         return curr;
     }
     Node * remove_helper (Node * curr, const K & key) {
+        if (curr == NULL) {
+            return NULL;
+        }
         if (curr->key == key) {
             Node * temp = NULL;
             if (curr->left == NULL) {
@@ -86,22 +89,25 @@ private:
         }
         return;
     }
-    void addPreOrder (Node * curr) {
-        if (curr != NULL) {
-            add(curr->key, curr->value);
+    Node * copyPreOrder (Node * rhs_curr) {
+        if (rhs_curr == NULL) {
+            return NULL;
         }
-        addPreOrder(curr->left);
-        addPreOrder(curr->right);
+        Node * helper = NULL;
+        helper = new Node (rhs_curr->key, rhs_curr->value);
+        helper->left = copyPreOrder(rhs_curr->left);
+        helper->right = copyPreOrder(rhs_curr->right);
+        return helper;
     }
 public:
     BstMap () : root(NULL) { }
-    BstMap (const BstMap & rhs) {
-        addPreOrder(rhs.root);
+    BstMap (const BstMap & rhs) : root (NULL) {
+        root = copyPreOrder(rhs.root);
     }
     BstMap & operator=(const BstMap & rhs) {
         if (this != &rhs) {
             destroy(root);
-            addPreOrder(rhs.root);
+            root = copyPreOrder(rhs.root);
         }
         return *this;
     }
