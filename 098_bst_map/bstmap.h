@@ -6,8 +6,10 @@
 #include <stdexcept>
 #include <string>
 
+#include "map.h"
+
 template <typename K, typename V>
-class BstMap : public Map {
+class BstMap : public Map<K, V> {
 private:
     class Node {
     public:
@@ -18,7 +20,7 @@ private:
         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
     };
     Node * root;
-    Node * findReplace (Node * curr) {
+    Node * findReplace (Node * curr) const {
         Node * ans = curr->right;
         while (ans->left != NULL) {
             ans = ans->left;
@@ -27,7 +29,7 @@ private:
     }
     Node * add_helper (Node * curr, const K & key, const V & value) {
         if (curr == NULL) {
-            Node * ans = new Node (key, value, NULL, NULL);
+            Node * ans = new Node (key, value);
             return ans;
         }
         else {
@@ -47,21 +49,32 @@ private:
         return curr;
     }
     Node * remove_helper (Node * curr, const K & key) {
-        if (curr->left == NULL) {
-            Node * temp = curr->right;
-            delete curr;
-            return temp;
+        if (curr->key == key) {
+            Node * temp = NULL;
+            if (curr->left == NULL) {
+                temp = curr->right; 
+                delete curr;
+                return temp;
+            }
+            else if (curr->right == NULL) {
+                temp = curr->left;
+                delete curr; 
+                return temp;
+            }
+            else {
+                temp = findReplace(curr);
+                curr->key = temp->key;
+                curr->value = temp->value;
+                delete temp;
+                return curr;
+            }
         }
-        else if (curr->right == NULL) {
-            Node * temp = curr->left;
-            delete curr;
-            return temp;
+        else if (curr->key < key) {
+            curr->right = remove_helper(curr->right, key);
+            return curr;
         }
         else {
-            Node * replacement = findReplace(curr);
-            curr->key = replacement->key;
-            curr->value = replacement->value;
-            delete replacement;
+            curr->left = remove_helper(curr->left, key);
             return curr;
         }
     }
@@ -69,13 +82,14 @@ private:
         if (curr != NULL) {
             destroy(curr->left);
             destroy(curr->right);
-            destroy(curr);
+            delete curr;
         }
         return;
     }
 public:
+    BstMap () : root(NULL) { }
     virtual void add (const K & key, const V & value) {
-        add_helper(root, key, value);
+        root = add_helper(root, key, value);
         return;
     }
     virtual const V & lookup(const K & key) const throw (std::invalid_argument) {
@@ -91,26 +105,13 @@ public:
                 curr = curr->right;
             }
         }
-        throw std::invalid_argument();
+        throw std::invalid_argument("Invalid!");
     }
     virtual void remove(const K & key) {
-        Node * curr = root;
-        while (curr != NULL) {
-            if (curr->key == key) {
-                curr
-            }
-            else if (curr->key > key) {
-                curr = curr->left;
-            }
-            else {
-                curr = curr->right;
-            }
-        }
-        if (curr == NULL) return;
-        remove_helper(curr, key);
+        root = remove_helper(root, key);
         return;
     }
-    virtual ~Map() {
+    ~BstMap() {
         destroy(root);
     }
 };
