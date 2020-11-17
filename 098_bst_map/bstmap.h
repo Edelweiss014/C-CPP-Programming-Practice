@@ -86,8 +86,25 @@ private:
         }
         return;
     }
+    void addPreOrder (Node * curr) {
+        if (curr != NULL) {
+            add(curr->key, curr->value);
+        }
+        addPreOrder(curr->left);
+        addPreOrder(curr->right);
+    }
 public:
     BstMap () : root(NULL) { }
+    BstMap (const BstMap & rhs) {
+        addPreOrder(rhs.root);
+    }
+    BstMap & operator=(const BstMap & rhs) {
+        if (this != &rhs) {
+            destroy(root);
+            addPreOrder(rhs.root);
+        }
+        return *this;
+    }
     virtual void add (const K & key, const V & value) {
         root = add_helper(root, key, value);
         return;
