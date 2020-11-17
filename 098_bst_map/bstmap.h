@@ -20,6 +20,7 @@ private:
         Node (const K & key, const V & value) : key(key), value(value), left(NULL), right(NULL) { }
     };
     Node * root;
+
     Node * findReplace (Node * curr) const {
         Node * ans = curr->right;
         while (ans->left != NULL) {
@@ -60,7 +61,9 @@ public:
     virtual void add (const K & key, const V & value) {
         Node ** curr = &root;
         while (* curr != NULL) {
-            if (key == (*curr)->key) return;
+            if (key == (*curr)->key) {
+                (*curr)->value = value;
+            }
             if (key < (*curr)->key) {
                 curr = &(*curr)->left;
             }
@@ -115,7 +118,7 @@ public:
         }
         return;
     }
-    ~BstMap() {
+    ~BstMap<K, V>() {
         destroy(root);
     }
 };
