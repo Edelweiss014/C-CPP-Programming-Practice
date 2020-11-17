@@ -109,7 +109,7 @@ public:
                     }
                     (*temp_curr)->key = (*curr)->key;
                     (*temp_curr)->value = (*curr)->value;
-                    Node * curr_left = &(*curr)->left;
+                    Node * curr_left = (*curr)->left;
                     delete (*curr);
                     *curr = curr_left;
                 }
