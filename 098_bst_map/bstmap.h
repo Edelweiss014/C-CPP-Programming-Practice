@@ -21,13 +21,6 @@ private:
     };
     Node * root;
 
-    Node * findReplace (Node * curr) const {
-        Node * ans = curr->right;
-        while (ans->left != NULL) {
-            ans = ans->left;
-        }
-        return ans;
-    }
     void destroy (Node * curr) {
         if (curr != NULL) {
             destroy(curr->left);
@@ -109,10 +102,14 @@ public:
                     *curr = temp;
                 }
                 else {
-                    Node * temp = findReplace(*curr);
-                    (*curr)->key = temp->key;
-                    (*curr)->value = temp->value;
-                    delete temp;
+                    Node ** temp = curr;
+                    temp = &(*temp)->left;
+                    while ((*temp)->right != NULL) {
+                        temp = &(*temp)->right;
+                    }
+                    (*curr)->key = (*temp)->key;
+                    (*curr)->value = (*temp)->value;
+                    delete (*temp);
                 }
             }
         }
