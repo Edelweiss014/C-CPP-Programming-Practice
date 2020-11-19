@@ -1,0 +1,15 @@
+Grading at 11/19/2020:05:57:01.158685
+For commit ID 3b0ac859825e345980778e707e3381d06527d6a6
+Grading at Thu Nov 19 13:57:00 CST 2020
+compiling
+g++ -ggdb3 -Wall -Werror -pedantic -o testFreq testFreq.cpp readFreq.cpp
+readFreq.cpp: In function ‘uint64_t* readFrequencies(const char*)’:
+readFreq.cpp:23:17: error: aggregate ‘std::ifstream myFile’ has incomplete type and cannot be defined
+   std::ifstream myFile;
+                 ^~~~~~
+Makefile:2: recipe for target 'testFreq' failed
+make: *** [testFreq] Error 1
+make failed
+Make succeeded, but testFreq does not exist (did you change the targets?)
+
+Overall Grade: F
