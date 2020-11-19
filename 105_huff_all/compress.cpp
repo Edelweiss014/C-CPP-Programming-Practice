@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <functional>
 #include <stdlib.h>
+#include <fstream>
 #include "readFreq.h"
 #include "node.h"
 
@@ -32,12 +33,20 @@ void writeCompressedOutput(const char* inFile,
 
   //WRITE YOUR CODE HERE!
   //open the input file for reading
-
+  std::ifstream myFile;
+  myFile.open(inFile);
   //You need to read the input file, lookup the characters in the map,
   //and write the proper bit string with the BitFileWriter
-
+  int c;
+  while ((c = myFile.get()) != EOF) {
+    std::map<unsigned,BitString>::const_iterator it = theMap.find((unsigned)c);
+    BitString bs = it->second;
+    bfw.writeBitString(bs);
+  }
   //dont forget to lookup 256 for the EOF marker, and write it out.
-
+  std::map<unsigned,BitString>::const_iterator it = theMap.find(256);
+  BitString bs = it->second;
+  bfw.writeBitString(bs);
   //BitFileWriter will close the output file in its destructor
   //but you probably need to close your input file.
 }
@@ -47,11 +56,13 @@ int main(int argc, char ** argv) {
     fprintf(stderr,"Usage: compress input output\n");
     return EXIT_FAILURE;
   }
-  //WRITE YOUR CODE HERE
-  //Implement main
-  //hint 1: most of the work is already done. 
-  //hint 2: you can look at the main from the previous tester for 90% of this
-
-
+  uint64_t * counts = readFrequencies(argv[1]);
+  assert(counts != NULL);
+  Node * tree = buildTree (counts);
+  delete[] counts;
+  std::map<unsigned,BitString> theMap;
+  BitString empty;
+  tree->buildMap(empty, theMap);
+  writeCompressedOutput(argv[1], argv[2], theMap);
   return EXIT_SUCCESS;
 }
