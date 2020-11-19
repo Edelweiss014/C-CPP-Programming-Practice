@@ -22,7 +22,7 @@ void printSym(std::ostream & s, unsigned sym) {
 }
 uint64_t * readFrequencies(const char * fname) {
   std::ifstream myFile;
-  uint64_t * myFreq = new uint64_t [257];
+  uint64_t * myFreq = new uint64_t [257] ();
   myFile.open(fname);
   char c;
   while (myFile >> std::noskipws >> c) {
