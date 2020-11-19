@@ -35,11 +35,15 @@ void writeCompressedOutput(const char* inFile,
   //open the input file for reading
   std::ifstream myFile;
   myFile.open(inFile);
+  if (myFile.fail()) {
+    std::cerr << "Error opening file << std::endl;
+    exit(EXIT_FAILURE);
+  }
   //You need to read the input file, lookup the characters in the map,
   //and write the proper bit string with the BitFileWriter
   int c;
   while ((c = myFile.get()) != EOF) {
-    std::map<unsigned,BitString>::const_iterator it = theMap.find((unsigned)c);
+    std::map<unsigned,BitString>::const_iterator it = theMap.find(c);
     BitString bs = it->second;
     bfw.writeBitString(bs);
   }
