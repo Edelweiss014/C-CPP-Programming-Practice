@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <cstdlib>
+#include <fstream>
 #include "readFreq.h"
 
 void printSym(std::ostream & s, unsigned sym) {
