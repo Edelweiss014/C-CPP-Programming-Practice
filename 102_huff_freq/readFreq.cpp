@@ -29,7 +29,7 @@ uint64_t * readFrequencies(const char * fname) {
     exit(EXIT_FAILURE);
   }
   char c;
-  while (myFile >> std::noskipws >> c) {
+  while ((c = myFile.get()) != EOF) {
     myFreq[(int) c]++;
   }
   myFreq[256] = 1;
