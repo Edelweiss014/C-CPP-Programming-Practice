@@ -36,7 +36,7 @@ void writeCompressedOutput(const char* inFile,
   std::ifstream myFile;
   myFile.open(inFile);
   if (myFile.fail()) {
-    std::cerr << "Error opening file << std::endl;
+    std::cerr << "Error opening file" << std::endl;
     exit(EXIT_FAILURE);
   }
   //You need to read the input file, lookup the characters in the map,
@@ -44,13 +44,11 @@ void writeCompressedOutput(const char* inFile,
   int c;
   while ((c = myFile.get()) != EOF) {
     std::map<unsigned,BitString>::const_iterator it = theMap.find(c);
-    BitString bs = it->second;
-    bfw.writeBitString(bs);
+    bfw.writeBitString(it->second);
   }
   //dont forget to lookup 256 for the EOF marker, and write it out.
   std::map<unsigned,BitString>::const_iterator it = theMap.find(256);
-  BitString bs = it->second;
-  bfw.writeBitString(bs);
+  bfw.writeBitString(it->second);
   //BitFileWriter will close the output file in its destructor
   //but you probably need to close your input file.
 }
