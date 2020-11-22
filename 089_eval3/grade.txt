@@ -1,0 +1,58 @@
+Grading at 11/22/2020:11:41:11.809501
+For commit ID 4f6dccc1ac9b85d96e1ef7df2a413770d745352e
+Grading at Sun Nov 22 19:41:07 CST 2020
+Doing some basic sanity checking for your submission
+
+Step 1
+Checking that cyoa-step1 compiles
+rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
+Makefile:18: recipe for target 'clean' failed
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step1 cyoa-step1.cpp cyoa.cpp page.cpp
+Testing ./cyoa-step1 story1/page1.txt 
+Your file did not match the expected ouput
+Testing ./cyoa-step1 story1/page8.txt 
+Line_2_did_not_match
+Your file did not match the expected ouput
+Testing ./cyoa-step1 story1/page11.txt 
+Line_2_did_not_match
+Your file did not match the expected ouput
+
+Step 2
+Checking that cyoa-step2 compiles
+rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
+Makefile:18: recipe for target 'clean' failed
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step2 cyoa-step2.cpp cyoa.cpp page.cpp story.cpp
+Testing ./cyoa-step2 story1 2\n1\n
+Your file matched the expected output
+Testing ./cyoa-step2 story1 1\n4\n1\n3\n
+Your file matched the expected output
+
+Step 3
+Checking that cyoa-step3 compiles
+rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
+Makefile:18: recipe for target 'clean' failed
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step3 cyoa-step3.cpp cyoa.cpp page.cpp story.cpp
+Testing ./cyoa-step3 story1 
+Your file matched the expected output
+Testing ./cyoa-step3 cycle 
+Your file matched the expected output
+
+Step 4
+Checking that cyoa-step4 compiles
+rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
+Makefile:18: recipe for target 'clean' failed
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step4 cyoa-step4.cpp cyoa.cpp page.cpp story.cpp
+Testing ./cyoa-step4 one_win 
+Your file matched the expected output
+Testing ./cyoa-step4 story1
+Your output matched the expected output
+
+Step 1: FAILED
+Step 2: PASSED
+Step 3: PASSED
+Step 4: PASSED
+
+You have NOT passed the pregrader's test cases.
+You should go back and debug the indicated step(s).
+
+Overall Grade: NO GRADE YET
