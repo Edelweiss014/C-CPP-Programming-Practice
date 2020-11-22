@@ -1,6 +1,6 @@
-Grading at 11/22/2020:11:41:11.809501
-For commit ID 4f6dccc1ac9b85d96e1ef7df2a413770d745352e
-Grading at Sun Nov 22 19:41:07 CST 2020
+Grading at 11/22/2020:11:51:41.108697
+For commit ID af6fbeffd12365769138e72001fd0d7f2f73425d
+Grading at Sun Nov 22 19:51:36 CST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
@@ -9,13 +9,11 @@ rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
 Makefile:18: recipe for target 'clean' failed
 g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step1 cyoa-step1.cpp cyoa.cpp page.cpp
 Testing ./cyoa-step1 story1/page1.txt 
-Your file did not match the expected ouput
+Your file matched the expected output
 Testing ./cyoa-step1 story1/page8.txt 
-Line_2_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Testing ./cyoa-step1 story1/page11.txt 
-Line_2_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 
 Step 2
 Checking that cyoa-step2 compiles
@@ -47,12 +45,12 @@ Your file matched the expected output
 Testing ./cyoa-step4 story1
 Your output matched the expected output
 
-Step 1: FAILED
+Step 1: PASSED
 Step 2: PASSED
 Step 3: PASSED
 Step 4: PASSED
 
-You have NOT passed the pregrader's test cases.
-You should go back and debug the indicated step(s).
+You have passed the pregrader's test cases, but you should still
+do extensive testing of your own.
 
 Overall Grade: NO GRADE YET
