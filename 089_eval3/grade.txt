@@ -1,11 +1,11 @@
-Grading at 11/23/2020:10:18:36.816495
-For commit ID 9fc04c62208f8456c843a09cbaee922aa0758233
-Grading at Mon Nov 23 18:18:36 CST 2020
+Grading at 11/23/2020:10:23:21.936951
+For commit ID e338348e02f9b7d246b5dfdfe8cf80913390ff4d
+Grading at Mon Nov 23 18:23:21 CST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
-rm *.o
+rm -f *~ *.o
 make: 'cyoa-step1' is up to date.
 Testing ./cyoa-step1 story1/page1.txt 
 Your file matched the expected output
@@ -16,8 +16,7 @@ Your file matched the expected output
 
 Step 2
 Checking that cyoa-step2 compiles
-rm *.o
-Makefile:18: recipe for target 'clean' failed
+rm -f *~ *.o
 make: 'cyoa-step2' is up to date.
 Testing ./cyoa-step2 story1 2\n1\n
 Your file matched the expected output
@@ -26,8 +25,7 @@ Your file matched the expected output
 
 Step 3
 Checking that cyoa-step3 compiles
-rm *.o
-Makefile:18: recipe for target 'clean' failed
+rm -f *~ *.o
 make: 'cyoa-step3' is up to date.
 Testing ./cyoa-step3 story1 
 Your file matched the expected output
@@ -36,8 +34,7 @@ Your file matched the expected output
 
 Step 4
 Checking that cyoa-step4 compiles
-rm *.o
-Makefile:18: recipe for target 'clean' failed
+rm -f *~ *.o
 make: 'cyoa-step4' is up to date.
 Testing ./cyoa-step4 one_win 
 Your file matched the expected output
