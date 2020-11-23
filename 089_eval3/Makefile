@@ -14,7 +14,8 @@ cyoa-step4: cyoa-step3.cpp cyoa.cpp page.cpp story.cpp
 	g++ $(CPPFLAGS) -o cyoa-step4 cyoa-step4.cpp cyoa.cpp page.cpp story.cpp
 
 
+.PHONY: clean
 clean:
-	rm *.o
+	rm -f *~ *.o
 
 
