@@ -15,6 +15,6 @@ int main(int argc, char ** argv) {
     checkArgs(argc, 2);
     Story s1(argv[1]);
     s1.verifyPages();
-    s1.checkReachable(true);
+    s1.getPrev(true);
     return EXIT_SUCCESS;
 }

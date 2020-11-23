@@ -20,7 +20,7 @@ private:
     unsigned numPages;
     std::vector<Page> availablePages;
     std::set<unsigned> reachablePages;
-    std::set<unsigned> winPages;
+    int winPage;
 public:
     // Default constructor
     Story() { }
@@ -42,23 +42,15 @@ public:
     // displayStory: show the story and interact with the reader
     void displayStory();
 
-    // checkReachable: check whether the pages in the story are
-    //      reachable and fill in the reachable set
-    void checkReachable(bool print);
-
     // printUnreachable: print the number of pages that are not
     //      reachable
     void printUnreachable();
 
-    // getWinPages: find pages that win and add them into the set
-    //      winPages
-    void getWinPages();
-
     // getWinWay: find a way to win
-    void getWinWay();
+    void getPrev(bool reachableCheck);
 
     // printWinWay: print the win method
-    void printWinWay(unsigned winPage);
+    void printWinWay();
 };
 
 #endif

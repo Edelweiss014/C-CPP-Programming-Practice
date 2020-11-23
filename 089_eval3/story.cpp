@@ -14,7 +14,7 @@
 // Parameter(s): a C-string "dir", which is the
 //      directory
 // Modifies: directory, availablePages
-Story::Story(const char * dir) : directory(dir), numPages(0) {
+Story::Story(const char * dir) : directory(dir), numPages(0), winPage(-1) {
     getPages();
     reachablePages.insert(1);
 }
@@ -107,40 +107,6 @@ void Story::displayStory() {
     return;
 }
 
-// checkReachable: check whether the pages in the story are
-//      reachable and fill in the reachable set
-// Parameter(s): print: whether to print the check result
-// Modifies: reachablePages
-// Output(s): if print, print the result to stdout
-void Story::checkReachable(bool print) {
-    while (1) {
-        bool changed = false;
-        // check the elements in reachablePages
-        std::set<unsigned>::iterator it = reachablePages.begin();
-        while (it != reachablePages.end()) {
-            // choices: availablePages[*it - 1].getChoices()
-            // corresponding page: choices[i].second.first
-            choices_t::const_iterator choice_it = availablePages[*it - 1].getChoices().begin();
-            while (choice_it != availablePages[*it - 1].getChoices().end()) {
-                if (reachablePages.find(choice_it->second.first) == reachablePages.end()) {
-                    reachablePages.insert(choice_it->second.first);
-                    changed = true;
-                }
-                ++choice_it;
-            }
-            ++it;
-        }
-        // if any changes happen, repeat
-        if (!changed) {
-            break;
-        }
-    }
-    if (print) {
-        printUnreachable();
-    }
-    return;
-}
-
 // printUnreachable: print the number of pages that are not
 //      reachable
 // Output(s): number of unreachable pages, to stdout
@@ -153,39 +119,21 @@ void Story::printUnreachable() {
     return;
 }
 
-// getWinPages: find pages that win and add them into the set
-//      winPages
-// Modifies: winPages
-void Story::getWinPages() {
-    std::set<unsigned>::iterator it = reachablePages.begin();
-    while (it != reachablePages.end()) {
-        if (availablePages[*it - 1].getNavi() == WIN) {
-            winPages.insert(*it);
-        }
-        ++it;
-    }
-    if (winPages.size() == 0) {
-        std::cout << "There is no way to win" << std::endl;
-        exit(EXIT_FAILURE);
-    }
-    return;
-}
-
 // getWinWay: find a way to win
 // Output(s): win method, to stdout
-void Story::getWinWay() {
+void Story::getPrev(bool reachableCheck) {
     // stack1: pair<pageNum, choice made to reach here>
     std::stack<unsigned> stack1;
-    unsigned winPage = -1;
     availablePages[0].setPrevAndChoice(1, 0);
+    reachablePages.insert(1);
     stack1.push(1);
     // using a depth-first search to find the path
     while (!stack1.empty()) {
         unsigned currPage = stack1.top();
+        reachablePages.insert(currPage);
         stack1.pop();
-        if (availablePages[currPage - 1].getNavi() == WIN) {
-            winPage = currPage;
-            break;
+        if (availablePages[currPage - 1].getNavi() == WIN && winPage == -1) {
+            winPage = (int) currPage;
         }
         choices_t::const_iterator it = availablePages[currPage - 1].getChoices().begin();
         while (it != availablePages[currPage - 1].getChoices().end()) {
@@ -197,16 +145,25 @@ void Story::getWinWay() {
             ++it;
         }
     }
-    printWinWay(winPage);
+    if (reachableCheck) {
+        printUnreachable();
+    }
+    else {
+        printWinWay();
+    }
     return;
 }
 
 // printWinWay: print the win method
 // Parameter(s): the winPage
 // Output(s): win method, to stdout
-void Story::printWinWay(unsigned winPage) {
+void Story::printWinWay() {
+    if (winPage == -1) {
+        std::cout << "There is no way to win" << std::endl;
+        return;
+    }
     std::stack<unsigned> winPath;
-    unsigned currPage = winPage;
+    unsigned currPage = (unsigned) winPage;
     while (currPage != 1) {
         winPath.push(currPage);
         currPage = availablePages[currPage - 1].getPrev();

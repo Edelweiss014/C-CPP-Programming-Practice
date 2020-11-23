@@ -15,8 +15,6 @@ int main(int argc, char ** argv) {
     checkArgs(argc, 2);
     Story s1(argv[1]);
     s1.verifyPages();
-    s1.checkReachable(false);
-    s1.getWinPages();
-    s1.getWinWay();
+    s1.getPrev(false);
     return EXIT_SUCCESS;
 }
