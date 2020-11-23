@@ -1,56 +1,30 @@
-Grading at 11/23/2020:06:22:00.206865
-For commit ID 183754418a9ea436e0504b75f34e7cdb63f41ded
-Grading at Mon Nov 23 14:21:55 CST 2020
+Grading at 11/23/2020:10:14:35.668490
+For commit ID cdc5338def379023c00981caab2c4f22ac013bea
+Grading at Mon Nov 23 18:14:35 CST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
-rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
-Makefile:18: recipe for target 'clean' failed
-g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step1 cyoa-step1.cpp cyoa.cpp page.cpp
-Testing ./cyoa-step1 story1/page1.txt 
-Your file matched the expected output
-Testing ./cyoa-step1 story1/page8.txt 
-Your file matched the expected output
-Testing ./cyoa-step1 story1/page11.txt 
-Your file matched the expected output
+The code did not compile!
 
 Step 2
 Checking that cyoa-step2 compiles
-rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
-Makefile:18: recipe for target 'clean' failed
-g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step2 cyoa-step2.cpp cyoa.cpp page.cpp story.cpp
-Testing ./cyoa-step2 story1 2\n1\n
-Your file matched the expected output
-Testing ./cyoa-step2 story1 1\n4\n1\n3\n
-Your file matched the expected output
+The code did not compile!
 
 Step 3
 Checking that cyoa-step3 compiles
-rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
-Makefile:18: recipe for target 'clean' failed
-g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step3 cyoa-step3.cpp cyoa.cpp page.cpp story.cpp
-Testing ./cyoa-step3 story1 
-Your file matched the expected output
-Testing ./cyoa-step3 cycle 
-Your file matched the expected output
+The code did not compile!
 
 Step 4
 Checking that cyoa-step4 compiles
-rm cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 *~ *.o
-Makefile:18: recipe for target 'clean' failed
-g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step4 cyoa-step4.cpp cyoa.cpp page.cpp story.cpp
-Testing ./cyoa-step4 one_win 
-Your file matched the expected output
-Testing ./cyoa-step4 story1
-Your output matched the expected output
+The code did not compile!
 
-Step 1: PASSED
-Step 2: PASSED
-Step 3: PASSED
-Step 4: PASSED
+Step 1: FAILED
+Step 2: FAILED
+Step 3: FAILED
+Step 4: FAILED
 
-You have passed the pregrader's test cases, but you should still
-do extensive testing of your own.
+You have NOT passed the pregrader's test cases.
+You should go back and debug the indicated step(s).
 
 Overall Grade: NO GRADE YET
