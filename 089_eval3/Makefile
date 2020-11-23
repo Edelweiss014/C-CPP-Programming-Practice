@@ -2,7 +2,7 @@ SOURCES=$(wildcard *.cpp)
 PROGS=cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4
 OBJS=$(patsubst %.cpp, %.o, $(SOURCES))
 CPPFLAGS=-ggdb3 -Wall -Werror -pedantic -std=gnu++98
-
+BINARIES=cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4
 
 all: $(PROGS)
 cyoa-step1: cyoa-step1.cpp cyoa.cpp page.cpp
@@ -17,6 +17,6 @@ cyoa-step4: cyoa-step3.cpp cyoa.cpp page.cpp story.cpp
 .PHONY: clean
 
 clean:
-    rm -f $(binaries) *.o
+    rm -f $(BINARIES) *.o
 
 
