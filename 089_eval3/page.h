@@ -47,6 +47,7 @@ public:
     // initPage: initialization of pageFile and choices
     void initPage(std::string & filename);
 
+    // getText: read the text and put it into the text field
     void getText(std::ifstream & pageFile);
 
     // getNavi: set the navi according to the content of files

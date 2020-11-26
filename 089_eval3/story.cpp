@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
 #include <set>
 #include <cstdio>
 #include <fstream>
@@ -9,12 +10,14 @@
 #include <stack>
 
 #include "story.h"
+#include "cyoa.h"
 
 // Constructor:
 // Parameter(s): a C-string "dir", which is the
 //      directory
 // Modifies: directory, availablePages
-Story::Story(const char * dir) : directory(dir), numPages(0), winPage(-1) {
+Story::Story(const char * dir) : directory(dir), numPages(0), 
+                    hasWin(false), hasLose(false), winPage(-1) {
     getPages();
     reachablePages.insert(1);
 }
@@ -43,6 +46,42 @@ void Story::getPages() {
     return;
 }
 
+// markReferenced: helper function of vefifyPages; mark
+//      corresponding bool value as true if referenced
+// Parameter(s): the iterator to be read; the array to be
+//      wrote
+// Modifies: verifyArr
+void Story::markReferenced(unsigned i, bool * verifyArr) {
+    for (choices_t::const_iterator it = availablePages[i].getChoices().begin();
+        it != availablePages[i].getChoices().end();
+        ++it) {
+        // it->second.first: the number of the referenced page
+        if (it->second.first > numPages || it->second.first < 1) {
+            // references to an invalid page; failure
+            delete[] verifyArr;
+            formatErr("Refers to an invalid page");
+        }
+        // mark the page as referenced
+        if (it->second.first - 1 != i) {
+            verifyArr[it->second.first - 1] = true;
+        }
+    }
+    return;
+}
+
+// markWinLose: helper function of verifyPages; set hasWin or
+//      hasLose to true if the page is WIN or LOSE page
+// Modifies: hasWin, hasLose
+void Story::markWinLose(unsigned i) {
+    if (availablePages[i].getNavi() == WIN) {
+        hasWin = true;
+    }
+    else if (availablePages[i].getNavi() == LOSE) {
+        hasLose = true;
+    }
+    return;
+}
+
 // verifyPages: verify that the pages are valid; exit with
 //      failure status if not
 void Story::verifyPages() {
@@ -53,25 +92,20 @@ void Story::verifyPages() {
         verifyArr[i] = false;
     }
     for (unsigned i = 0; i < numPages; i++) {
-        for (choices_t::const_iterator it = availablePages[i].getChoices().begin();
-            it != availablePages[i].getChoices().end();
-            ++it) {
-            // it->second.first: the number of the referenced page
-            if (it->second.first > numPages) {
-                // references to an invalid page; failure
-                delete[] verifyArr;
-                formatErr();
-            }
-            // mark the page as referenced
-            verifyArr[it->second.first - 1] = true;
-        }
+        // verifying the page (i + 1)
+        markReferenced(i, verifyArr);
+        markWinLose(i);
     }
     for (unsigned i = 1; i < numPages; i++) {
         if (verifyArr[i] == false) {
             // fails to reference some pages; failure
             delete[] verifyArr;
-            formatErr();
+            formatErr("Some pages are not referenced");
         }
+    }
+    if ((!hasWin) || (!hasLose)) {
+        delete[] verifyArr;
+        formatErr("No WIN page, or no LOSE page");
     }
     delete[] verifyArr;
     return;
@@ -119,8 +153,12 @@ void Story::printUnreachable() {
     return;
 }
 
-// getWinWay: find a way to win
-// Output(s): win method, to stdout
+// getPrev: set the previous page by checking choices
+//      using a depth-first search
+// Parameter(s): reachableCheck: true for step 3, false
+//      for step 4
+// Output(s): in step 3, output the unreachable pages; 
+//      in step 4, output the win methods
 void Story::getPrev(bool reachableCheck) {
     // stack1: pair<pageNum, choice made to reach here>
     std::stack<unsigned> stack1;

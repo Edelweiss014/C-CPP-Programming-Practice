@@ -18,6 +18,8 @@ class Story {
 private:
     std::string directory;
     unsigned numPages;
+    bool hasWin;
+    bool hasLose;
     std::vector<Page> availablePages;
     std::set<unsigned> reachablePages;
     int winPage;
@@ -28,12 +30,15 @@ public:
     // Constructor
     Story(const char * dir);
 
-    // Copy constructor
-    Story(const Story & rhs);
-
     // getPages: initialize the pages and put them into
     //      availablePages
     void getPages();
+    
+    // markReferenced: helper function of vefifyPages; mark
+    //      corresponding bool value as true if referenced
+    void markReferenced(unsigned i, bool * verifyArr);
+
+    void markWinLose(unsigned i);
 
     // verifyPages: verify that the pages are valid; exit with
     //      failure status if not
@@ -46,7 +51,8 @@ public:
     //      reachable
     void printUnreachable();
 
-    // getWinWay: find a way to win
+    // getPrev: set the previous page by checking choices
+    //      using a depth-first search
     void getPrev(bool reachableCheck);
 
     // printWinWay: print the win method

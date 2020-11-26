@@ -24,8 +24,8 @@ void checkArgs (size_t providedNum, size_t rightNum) {
 // formatErr: exits with failure after printing
 //      error message to stderr indicating the
 //      error input format
-void formatErr () {
-    std::cerr << "Error format" << std::endl;
+void formatErr (std::string mesg) {
+    std::cerr << mesg << std::endl;
     exit(EXIT_FAILURE);
     return;
 }

@@ -60,6 +60,8 @@ void Page::initPage(std::string & filename) {
     return;
 }
 
+// getText: read the text and put it into the text field
+// Modifies: text
 void Page::getText(std::ifstream & pageFile) {
     int c;
     while ((c = pageFile.get()) != EOF) {
@@ -69,25 +71,26 @@ void Page::getText(std::ifstream & pageFile) {
     return;
 }
 
+
 // getNavi: set the navi according to the content of files
 // Modifies: navi, choices
 void Page::getNaviChoices(std::ifstream & pageFile) {
     unsigned rank = 1;
     std::string line;
     while (std::getline(pageFile, line)) {
-        if (rank == 1) {
+        if (rank == 1 && (line == "WIN" || line == "LOSE")) {
             // Check whether a page is win or lose
             if (line == "WIN") {
                 navi = WIN;
-                std::getline(pageFile, line);
-                return;
             }
-            else if (line == "LOSE") {
+            else {
                 navi = LOSE;
-                std::getline(pageFile, line);
-                return;
             }
-
+            std::getline(pageFile, line);
+            if (line[0] != '#') {
+                formatErr();
+            }
+            return;
         }
         if (line[0] == '#') {
             return;
@@ -107,7 +110,7 @@ void Page::addSingleChoice(std::string & line, unsigned rank) {
     }
     std::string pageNumStr = line.substr(0, colonPos);
     if (!isAllDigits(pageNumStr)) {
-        formatErr();
+        formatErr("Invalid choice");
     }
     std::string choiceContent = line.substr(colonPos + 1, line.size() - colonPos);
     choices[rank] = std::make_pair(strToUnsign(pageNumStr), choiceContent);

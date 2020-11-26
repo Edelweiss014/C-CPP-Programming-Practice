@@ -20,7 +20,7 @@ void checkArgs (size_t providedNum, size_t rightNum);
 // formatErr: exits with failure after printing
 //      error message to stderr indicating the
 //      error input format
-void formatErr ();
+void formatErr (std::string mesg = "Error format");
 
 // formatErr: exits with failure after printing
 //      error message to stderr indicating the
