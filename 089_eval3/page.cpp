@@ -24,7 +24,7 @@ Page::Page(std::string & filename) : num(0), text(), exist(true),
 Page::Page(std::string & directory, unsigned pageNum) : num(pageNum),
                                                         text(),
                                                         exist(true),
-                                                        navi(CHOICES),
+                                                        navi(NO_NAVI),
                                                         choices(),
                                                         prev(-1) {
     std::string filename = directory + "/" + "page" + unsignToStr(pageNum) + ".txt";
