@@ -98,6 +98,7 @@ void Page::getNaviChoices(std::ifstream & pageFile) {
         if (line[0] == '#') {
             return;
         }
+        navi = CHOICES;
         addSingleChoice(line, rank);
         rank++;
     }
