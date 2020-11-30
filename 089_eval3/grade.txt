@@ -1,14 +1,14 @@
-Grading at 11/26/2020:11:32:57.543476
-For commit ID 80c58ce6627e91c5603d15226a2cd7d91afceb47
-Grading at Thu Nov 26 19:32:56 CST 2020
+Grading at 11/30/2020:08:01:16.411188
+For commit ID c0e28355dc0ae9586438c30ac41b0093debc27b8
+Grading at Mon Nov 30 16:01:15 CST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
 rm -f *~ *.o
-g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step1 cyoa-step1.cpp cyoa.cpp page.cpp
+make: 'cyoa-step1' is up to date.
 Testing ./cyoa-step1 story1/page1.txt 
-Your file matched the expected output
+Your file did not match the expected ouput
 Testing ./cyoa-step1 story1/page8.txt 
 Your file matched the expected output
 Testing ./cyoa-step1 story1/page11.txt 
@@ -41,12 +41,12 @@ Your file matched the expected output
 Testing ./cyoa-step4 story1
 Your output matched the expected output
 
-Step 1: PASSED
+Step 1: FAILED
 Step 2: PASSED
 Step 3: PASSED
 Step 4: PASSED
 
-You have passed the pregrader's test cases, but you should still
-do extensive testing of your own.
+You have NOT passed the pregrader's test cases.
+You should go back and debug the indicated step(s).
 
 Overall Grade: NO GRADE YET
