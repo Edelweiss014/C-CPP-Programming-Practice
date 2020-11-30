@@ -1,0 +1,13 @@
+1: Ordinary, 1 choice
+2: Ordinary, 5 choices
+3: No choice
+4. Non-num choice(s)
+5. Choice that goes to itself
+6. Colon-missing choice(s)
+7. Choice to Page 0
+8. #-missing page
+9. #(s) in the text
+10. WIN page
+11. LOSE page
+12. WIN page with a choice
+13. No text

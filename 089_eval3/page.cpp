@@ -14,7 +14,7 @@
 // Parameter(s): the filename
 // Modifies: all fields in the Page class (initialized)
 Page::Page(std::string & filename) : num(0), text(), exist(true),
-                        navi(CHOICES), choices(), prev(-1) {
+                        navi(NO_NAVI), choices(), prev(-1) {
     initPage(filename);
 }
 
@@ -56,6 +56,9 @@ void Page::initPage(std::string & filename) {
         return;
     }
     getNaviChoices(pageFile);
+    if (navi == NO_NAVI) {
+        formatErr("No navi available");
+    }
     getText(pageFile);
     return;
 }

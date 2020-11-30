@@ -8,6 +8,9 @@ int main(int argc, char ** argv) {
     checkArgs(argc, 2);
     std::string filename(argv[1]);
     Page p1(filename);
+    if (!p1.isExist()) {
+        notAvailErr();
+    }
     p1.printPage();
     return EXIT_SUCCESS;
 }

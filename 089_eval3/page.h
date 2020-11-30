@@ -8,7 +8,7 @@
 #include <map>
 
 // an enum to define the type of navigation
-enum navi_t { WIN, LOSE, CHOICES };
+enum navi_t { WIN, LOSE, CHOICES, NO_NAVI };
 
 // choices: in each element: rank, pair<nextPageNum, choiceContent>
 //      rank: starts from 1
@@ -25,7 +25,7 @@ private:
     int choiceToHere;
 public:
     // Default constructor
-    Page() : num(0), text(), exist(false), navi(CHOICES), choices(), prev(-1), choiceToHere(-1) { }
+    Page() : num(0), text(), exist(false), navi(NO_NAVI), choices(), prev(-1), choiceToHere(-1) { }
 
     // Constructor
     Page(std::string & filename);

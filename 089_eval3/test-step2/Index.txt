@@ -1,0 +1,13 @@
+1: No Page 1
+2: No Page 12 but has Page 13 (references to page 13 to check)
+3: One of the page is an error page
+4: V-f-1 References an invalid page
+5: V-f-2 A page is not referenced
+6: V-f-3 A page is only referenced by itself
+7: V-f-4 No WIN page
+8: V-f-5 No LOSE page
+9. O-1 WIN round
+10. O-2 LOSE round
+11. O-3 Has a self-loop
+12. V-s-1 A page is referenced by both itself and other(s)
+13. V-s-2 The last page is the only WIN page
