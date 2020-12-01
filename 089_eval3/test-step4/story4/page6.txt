@@ -1,0 +1,7 @@
+8:This is a choice to page 8
+9:This is a choice to page 9
+#
+A mountain of treasure rises before you, but two things are more
+interesting than the sapphires and gold doubloons. To your right, on a
+unique and elegant coat stand, rests a silvery cloak. To your left, atop a
+grand marble desk, lies an ancient book with gold-leaf trim. 

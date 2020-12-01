@@ -1,0 +1,7 @@
+6:This is a choice to page 6
+5:This is a choice to page 5
+#
+As you tiptoe past the sleeping dragon, steam rising from her nostrils, you
+see a gleaming treasure hoard, just beyond the scaly tail.
+
+An enormous, rare Scythian ruby gleams atop a pedestal, beckoning you.

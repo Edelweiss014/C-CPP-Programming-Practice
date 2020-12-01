@@ -1,0 +1,5 @@
+10:This is a choice to page 10
+7:This is a choice to page 7
+#
+Your famed sword Ice becomes embedded in the dragon's neck scales, and the
+dragon rolls over, crushing you.

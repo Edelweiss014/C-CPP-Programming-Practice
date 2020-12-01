@@ -1,0 +1,8 @@
+3:This is a choice to page 3
+2:This is a choice to page 2
+#
+The book is the original copy of All of Programming. You pore over its
+contents, internalizing its every lesson.
+
+Equipped with its knowledge, you sneak back to where the dragon is
+sleeping. 

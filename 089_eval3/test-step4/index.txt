@@ -1,0 +1,7 @@
+1. Provided story1
+2. Provided story2
+3. F-1 WIN unreachable
+4. F-2 WIN unreachable
+5. S-1 Page 1 wins
+6. s-2 Page 1 loses
+7. 2, 3, 8 unreachable
