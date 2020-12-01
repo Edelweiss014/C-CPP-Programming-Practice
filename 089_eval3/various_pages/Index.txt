@@ -11,3 +11,7 @@
 11. LOSE page
 12. WIN page with a choice
 13. No text
+14. Invalid navigation
+15. Two navigations
+16. Non-valid navigation page number
+17. Start with a blank line
