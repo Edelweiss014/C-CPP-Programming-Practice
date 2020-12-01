@@ -1,12 +1,12 @@
-Grading at 12/01/2020:12:10:58.966340
-For commit ID 44336a59134f32f86f160f3f035070d04f631bf5
-Grading at Tue Dec  1 20:10:55 CST 2020
+Grading at 12/01/2020:12:53:30.871540
+For commit ID 6f02b18d8fac78b74b66f98cea05f5b3e55bc195
+Grading at Tue Dec  1 20:53:28 CST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
 rm -f *~ *.o
-g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step1 cyoa-step1.cpp cyoa.cpp page.cpp
+make: 'cyoa-step1' is up to date.
 Testing ./cyoa-step1 story1/page1.txt 
 Your file matched the expected output
 Testing ./cyoa-step1 story1/page8.txt 
