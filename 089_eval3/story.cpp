@@ -122,7 +122,7 @@ void Story::displayStory() {
         // if wins or loses, exit with success
         if (availablePages[currPage - 1].getNavi() == WIN ||
             availablePages[currPage - 1].getNavi() == LOSE) {
-            exit(EXIT_SUCCESS);
+            return;
         }
         // otherwise, read a number from the user
         std::cin >> nextRankStr;
