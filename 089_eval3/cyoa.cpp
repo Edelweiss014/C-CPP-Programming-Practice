@@ -74,6 +74,9 @@ unsigned strToUnsign (std::string & str) {
     unsigned num;
     os << str;
     os >> num;
+    if (num == 0) {
+        formatErr("Zero pagenum");
+    }
     return num;
 }
 
