@@ -117,6 +117,10 @@ void Page::addSingleChoice(std::string & line, unsigned rank) {
         formatErr("Invalid choice");
     }
     std::string choiceContent = line.substr(colonPos + 1, line.size() - colonPos);
+    unsigned pageNum = strToUnsign(pageNumStr);
+    if (pageNum == 0) {
+        formatErr("Zero choice num");
+    }
     choices[rank] = std::make_pair(strToUnsign(pageNumStr), choiceContent);
     return;
 }
