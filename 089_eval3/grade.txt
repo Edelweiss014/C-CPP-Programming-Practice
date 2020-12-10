@@ -1,52 +1,271 @@
-Grading at 12/03/2020:17:15:46.859676
+Grading at 12/10/2020:14:00:26.800944
 For commit ID ac3ef75741c80f0df7cde44c27851c6ae8d3f702
-Grading at Fri Dec  4 01:15:46 CST 2020
-Doing some basic sanity checking for your submission
+Grading at Thu Dec 10 21:59:41 CST 2020
 
+=========================================================================
 Step 1
+
 Checking that cyoa-step1 compiles
 rm -f *~ *.o
-make: 'cyoa-step1' is up to date.
-Testing ./cyoa-step1 story1/page1.txt 
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step1 cyoa-step1.cpp cyoa.cpp page.cpp
++-----------------------------------------------------------------------+
+Test case 1
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 2
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 3
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 4
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 5
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 6
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 7
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 8
 Your file matched the expected output
-Testing ./cyoa-step1 story1/page8.txt 
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 9
 Your file matched the expected output
-Testing ./cyoa-step1 story1/page11.txt 
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 10
 Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 11
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 12
+Your file matched the expected output
+                                                         [2/2]
 
+Step 1 total                                             [20.0/20]
+
+=========================================================================
 Step 2
+
 Checking that cyoa-step2 compiles
 rm -f *~ *.o
-make: 'cyoa-step2' is up to date.
-Testing ./cyoa-step2 story1 2\n1\n
+g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o cyoa-step2 cyoa-step2.cpp cyoa.cpp page.cpp story.cpp
++-----------------------------------------------------------------------+
+Test case 13
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 14
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 15
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 16
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 17
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 18
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 19
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 20
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 21
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 22
 Your file matched the expected output
-Testing ./cyoa-step2 story1 1\n4\n1\n3\n
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 23
 Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 24
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 25
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 26
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 27
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 28
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 29
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 30
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 31
+Your file matched the expected output
+                                                         [2/2]
 
+Step 2 total                                             [30.0/30]
+
+=========================================================================
 Step 3
+
 Checking that cyoa-step3 compiles
 rm -f *~ *.o
 make: 'cyoa-step3' is up to date.
-Testing ./cyoa-step3 story1 
++-----------------------------------------------------------------------+
+Test case 32
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 33
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 34
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 35
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 36
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 37
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 38
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 39
 Your file matched the expected output
-Testing ./cyoa-step3 cycle 
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 40
 Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 41
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 42
+Your file matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 43
+Your file matched the expected output
+                                                         [3/3]
 
+Step 3 total                                             [20.0/20]
+
+=========================================================================
 Step 4
+
 Checking that cyoa-step4 compiles
 rm -f *~ *.o
 make: 'cyoa-step4' is up to date.
-Testing ./cyoa-step4 one_win 
++-----------------------------------------------------------------------+
+Test case 44
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 45
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 46
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 47
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 48
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 49
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 50
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 51
+Your output matched the expected result
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 52
+Your output matched the expected result
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 53
 Your file matched the expected output
-Testing ./cyoa-step4 story1
-Your output matched the expected output
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 54
+Your output matched the expected result
+                                                         [3/3]
 
-Step 1: PASSED
-Step 2: PASSED
-Step 3: PASSED
-Step 4: PASSED
+Step 4 total                                             [20.0/20]
 
-You have passed the pregrader's test cases, but you should still
-do extensive testing of your own.
+=========================================================================
+Code quality
 
-Overall Grade: NO GRADE YET
+Abstration:    2
+OOP:           2
+Naming:        2
+Formatting:    2
+Documentation: 2
+Comments from your grader:
+Excellent! Nice and neat work!
+Quality total                                            [10/10]
+
+=========================================================================
+
+Overall Grade: 100
