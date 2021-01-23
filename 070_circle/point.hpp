@@ -1,1 +1,0 @@
-../069_point/point.hpp
